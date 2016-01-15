@@ -1,0 +1,15 @@
+<% return partial(:includes, locals: { node: node }) if %w[complexContent extension].include?(node.name) %>
+
+<li class="simple node <%= node.name %>" id="node_<%= node.object_id %>">
+
+	<div class="node-heading">
+		<small><b class="text-uppercase text-muted"><%= node.name %></b></small>
+	</div>
+
+	<div class="node-body" id="node_<%= node.object_id %>_body">
+		<ul class="includes" id="node_<%= node.object_id %>_includes">
+			<%= partial :includes, locals: { node: node } %>
+		</ul>
+	</div>
+	
+</li>

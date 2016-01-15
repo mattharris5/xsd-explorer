@@ -1,0 +1,146 @@
+.container-fluid {
+  padding: 0;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar-brand > img {
+  float: left;
+  margin-right: 10px;
+  height: 40px;
+  top:-10px;
+  position: relative;
+}
+
+.handle, .handle:hover, .show-inspector, .show-inspector:hover {
+  cursor: pointer;
+}
+
+h2.lead {
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #959595;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.panel {
+  margin-bottom: 0;
+}
+
+.node.hover > .node-heading > a.name {
+  background: yellow;
+}
+
+em.type {
+  margin-left: 0.5em;
+}
+
+.node.simple > .node-heading b {
+  font-weight: normal !important;
+}
+
+.node:hover > .node-heading {
+  background: rgba(0,0,255,0.05);
+  border-radius: 0;
+}
+
+.node:hover > .node-body {
+  background: rgba(0,0,255,0.01);
+}
+
+.node.extension > .node-heading > a.name::before {
+  content: "extends";
+  text-transform: uppercase;
+  font-size: 70%;
+  margin-right: 0.25em;
+}
+
+.node > .node-heading > small {
+  font-size: 70%;
+}
+
+/* Nav lines*/
+.schema, .schema ul, .schema li {
+     position: relative;
+}
+
+.schema ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.schema li::before, .schema li::after {
+    content: "";
+    position: absolute;
+    left: -12px;
+}
+
+/* Horizontal lines */
+.schema li::before {
+    border-top: 1px solid #bfbfbf;
+    top: 9px;
+    width: 8px;
+    height: 0;
+}
+
+/* Vertical lines */
+.schema li::after {
+    border-left: 1px solid #bfbfbf;
+    height: 100%;
+    width: 0px;
+    top: 2px;
+}
+
+/* Short line heading*/
+.schema ul > li:last-child::after {
+    height: 8px;
+}
+
+.code pre {
+  font-size: 85%;
+}
+
+.split-pane {
+  height: 95%;
+  min-height: 600px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+.split-pane div.split {
+	overflow: auto;
+  box-sizing: border-box;
+}
+
+#leftSplit {
+  padding: 20px 0 20px 20px;
+}
+
+#rightSplit {
+  padding: 20px 40px 20px 20px;
+}
+
+.vsplitbar {
+	width: 10px;
+	background: #eee;
+  background-image: url('/images/grips/vertical.png');
+  background-repeat: no-repeat;
+  background-position: 50%;
+  cursor: ew-resize;
+}
+
+a.ceds {
+  background: url('/images/cedslogo_notext.jpg') no-repeat center left;
+  padding-left: 20px;
+  background-size: contain; 
+}

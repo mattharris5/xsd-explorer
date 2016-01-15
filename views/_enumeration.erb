@@ -1,0 +1,4 @@
+<tr>
+	<td><%= enumeration["value"] %></td>
+	<td><%= enumeration.search("./*/xs:appinfo").collect(&:text).first rescue "#error" %></td>
+</tr>

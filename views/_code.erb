@@ -1,0 +1,8 @@
+<div id="node_structure" class="code collapse">
+	<h4>XML Structure</h4>
+	<pre class=""><%= CodeRay.scan(node.to_xml, :xml).html(
+				:wrap => nil,
+				:line_numbers => nil,
+				:css => :style
+		) %></pre>
+</div>

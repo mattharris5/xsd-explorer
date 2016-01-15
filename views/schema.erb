@@ -1,0 +1,20 @@
+<div class="row split-pane">
+
+	<div id="leftSplit" class="split split-horizontal">
+		<div class="schema">
+			<ul>
+				<%= partial :node, collection: @doc.root.children %>
+			</ul>
+		</div>
+	</div>
+
+	<div id="rightSplit" class="split split-horizontal">
+		<div id="info_panel">
+			<div class="contents">
+			<h4><span class="glyphicon glyphicon-info-sign"></span> Information</h4>
+				<em>Select an item in the schema to view more information</em>
+			</div>
+		</div>
+	</div>
+
+</div>

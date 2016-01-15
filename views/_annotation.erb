@@ -1,0 +1,8 @@
+<dt><%= annotation.name %></dt>
+<dd>
+	<% if annotation.text =~ /\A#{URI::regexp(['http', 'https'])}\z/ %>
+		<a class="ceds" href="<%= annotation.text %>" target="_blank"><%= annotation.text %></a>
+	<% else %>
+		<%= annotation.text %>
+	<% end %>
+</dd>

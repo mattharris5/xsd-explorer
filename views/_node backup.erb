@@ -1,0 +1,28 @@
+<% return nil if node.text? || %w[annotation include].include?(node.name) %>
+<% return partial(:simple_node, locals: { node: node }) if %w[sequence complexContent extension].include?(node.name) %>
+
+<div class="node <%= node.name %> panel panel-default <%= css_class rescue nil %>" id="node_<%= node.object_id %>">
+
+	<div class="panel-heading node-heading">
+		<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+		<a class="name handle" data-toggle="collapse" data-target="#node_<%= node.object_id %>_body">
+			<b><%= node['name'] || "e" %></b>
+		</a>
+		<em class="type"><%= node.name %></em>
+		
+		<a class="pull-right show-inspector" data-toggle="modal" data-target="#node_<%= node.object_id %>_code">Show structure</a>		
+	</div>
+
+	<div class="panel-body node-body collapse" id="node_<%= node.object_id %>_body">
+		<p class="documentation">
+			<%= node.search("./*/xs:documentation").collect(&:text).first rescue "can't render documentation" %>
+		</p>
+		
+		<%= partial :attributes, locals: { node: node } %>
+		<%= partial :code, locals: { node: node } %>
+	
+		<div class="includes" id="node_<%= node.object_id %>_includes">
+			<%= partial :includes, locals: { node: node } %>
+		</div>
+	</div>	
+</div>

@@ -1,0 +1,20 @@
+<hr>
+
+<em class="text-muted pull-right">
+	Type: <code><%= node.search("./xs:restriction").first["base"] rescue nil %></code>
+</em>
+<h4>Enumerations</h4>
+
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Value</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= partial :enumeration, collection: node.search("./*/xs:enumeration") rescue "can't render enumerations" %>
+	</tbody>
+</table>
+
+<hr>

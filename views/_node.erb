@@ -1,0 +1,22 @@
+<% return nil if node.text? || %w[annotation include restriction].include?(node.name) %>
+<% return partial(:simple_node, locals: { node: node }) unless node['name'] %>
+
+<li class="node <%= node.name %> <%= css_class rescue nil %>" id="node_<%= node.object_id %>">
+
+	<div class="node-heading">
+		<a class="name handle" data-toggle="collapse" data-target="#node_<%= node.object_id %>_body">
+			<b><%= node['name'] || "e" %></b>
+		</a>
+		
+		<em class="type small text-muted"><%= node.name %></em>
+	</div>
+
+	<div class="node-body collapse" id="node_<%= node.object_id %>_body">
+		<%= partial :attributes, locals: { node: node } %>
+	
+		<ul class="includes" id="node_<%= node.object_id %>_includes">
+			<%= partial :includes, locals: { node: node } %>
+		</ul>
+	</div>	
+	
+</li>
