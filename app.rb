@@ -9,7 +9,7 @@ set :partial_template_engine, :erb
 enable :partial_underscores
 
 get '/' do
-  erb "<a href='schema'>xSre</a>"
+  erb "<a href='/schema/NADM/3.3/Report/SIFNAxSRE.xsd'>xSre</a>"
 end
 
 get '/schema/*' do
