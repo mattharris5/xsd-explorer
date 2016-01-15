@@ -12,13 +12,19 @@ get '/' do
   erb "<a href='schema'>xSre</a>"
 end
 
-get '/schema' do
-  @doc = Nokogiri::XML(File.open("./public/schemas/NADM/3.3/Report/SIFNAxSRE.xsd")) do |config|
+get '/schema/*' do
+  schema_root = settings.root, "public", "schemas"
+  schema_file = File.join(schema_root, params['splat'])
+  default_file = File.join(settings.root, "views", "default.xsd")
+  include_path = File.dirname(schema_file)
+  
+  @doc = Nokogiri::XML(File.open(schema_file)) do |config|
     config.noblanks.noent.xinclude.nsclean
   end
-  @includes = Nokogiri.XML("<?xml version=\"1.0\"?><xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" elementFormDefault=\"qualified\"></xs:schema>")
+  @includes = Nokogiri.XML(File.open(default_file))
   @doc.search("//xs:include").each do |node|
-    xml = Nokogiri::XML(File.open("./public/schemas/NADM/3.3/Report/#{node['schemaLocation']}")) do |config|
+    include_file = File.join(File.expand_path(File.join(include_path, node['schemaLocation'])))
+    xml = Nokogiri::XML(File.open(include_file)) do |config|
       config.noblanks.noent.xinclude.nsclean
     end
     @includes.root << xml.root.children
