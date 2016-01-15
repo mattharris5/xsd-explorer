@@ -55,7 +55,14 @@
             var attrContents = $(this).parent().siblings().children(".attributes").clone(true)
             attrContents.removeClass("hidden")
             $("#info_panel .contents").append(attrContents)
+            
+            if($("#showXML").prop('checked'))
+                $("#info_panel .code").collapse('show')
         });
+        
+        $("#showXML").click(function(event) {
+            $("#info_panel .code").collapse('toggle')
+        })
     });
     </script>
 </body>

@@ -1,7 +1,4 @@
 <div class="attributes hidden" id="node_<%= node.object_id %>_attributes">
-	<a role="button" data-toggle="collapse" data-target="#info_panel .code" class="pull-right">
-		Toggle XML
-	</a>
 	<h2 class="lead"><%= node['name'] %></h2>
 	<p class="documentation">
 		<%= node.search("./*/xs:documentation").collect(&:text).first rescue "can't render documentation" %>
