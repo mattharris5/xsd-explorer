@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'sinatra/partial'
 require 'coderay'
 require 'uri'
+require 'erubis'
 
 set :partial_template_engine, :erb
 enable :partial_underscores
