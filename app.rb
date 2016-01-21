@@ -15,19 +15,43 @@ end
 get '/schema/*' do
   schema_root = settings.root, "public", "schemas"
   schema_file = File.join(schema_root, params['splat'])
-  default_file = File.join(settings.root, "views", "default.xsd")
   include_path = File.dirname(schema_file)
+  include_file = nil
   
-  @doc = Nokogiri::XML(File.open(schema_file)) do |config|
+  @doc = load_xml(schema_file)
+  @includes = includes
+  erb :schema
+end
+
+def load_xml(file_path)
+  if (loaded.include?(file_path))
+    puts " -> Skipping #{file_path}"
+    return nil
+  end
+  puts " -> Loading #{file_path}"
+  xml = Nokogiri::XML(File.open(file_path)) do |config|
     config.noblanks.noent.xinclude.nsclean
   end
-  @includes = Nokogiri.XML(File.open(default_file))
-  @doc.search("//xs:include").each do |node|
-    include_file = File.join(File.expand_path(File.join(include_path, node['schemaLocation'])))
-    xml = Nokogiri::XML(File.open(include_file)) do |config|
-      config.noblanks.noent.xinclude.nsclean
-    end
-    @includes.root << xml.root.children
+  xml.search("//xs:include").each do |node|
+    include_file = File.expand_path(File.join(File.dirname(file_path), node['schemaLocation']))
+    include_xml = load_xml(include_file)
+    includes.root << include_xml.root.children if include_xml
   end
-  erb :schema
+  loaded << file_path
+  return xml
+end
+
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+  
+  def loaded
+    @loaded ||= []
+  end
+
+  def includes
+    default_file = File.join(settings.root, "views", "default.xsd")
+    @includes ||= Nokogiri.XML(File.open(default_file))
+  end
 end
