@@ -1,4 +1,7 @@
-<div class="attributes hidden" id="node_<%= node.object_id %>_attributes">
+<% node ||= attributes %>
+<% css_class ||= 'hidden' %>
+
+<div class="attributes <%= css_class %>" id="node_<%= node.object_id %>_attributes">
 	<h2 class="lead"><%= node['name'] %></h2>
 	<p class="documentation">
 		<%= node.search("./*/xs:documentation").collect(&:text).first rescue "can't render documentation" %>
@@ -7,12 +10,17 @@
 	<dl class="dl-horizontal text-muted clearfix">
 		<% for key, value in node.attributes %>
 		<dt><%= key %></dt>
-		<dd><%= value %></dd>
+		<dd><%= key == 'type' ? "<code>#{value}</code>" : value %></dd>
 		<% end %>
 
 		<%= partial :annotation, collection: node.search("./xs:annotation/xs:appinfo/*") rescue "can't render annotation" %>
 	</dl>
-	
-	<%= partial :enumerations, locals: { node: node } unless node.search("./*/xs:enumeration").empty? %>
+		
 	<%= partial :code, locals: { node: node } %>
+	
+	<% if include_node = @includes.search("//*[@name='#{node['type']}']") %>
+		<%= partial :attributes, collection: include_node, locals: { css_class: 'secondary' } unless include_node.empty? %>
+		<%= partial :enumerations, locals: { node: include_node } %>
+	<% end %>
+	
 </div>

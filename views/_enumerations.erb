@@ -1,4 +1,4 @@
-<hr>
+<% return nil if node.search("./*/xs:enumeration").empty? %>
 
 <em class="text-muted pull-right">
 	Type: <code><%= node.search("./xs:restriction").first["base"] rescue nil %></code>
@@ -16,5 +16,3 @@
 		<%= partial :enumeration, collection: node.search("./*/xs:enumeration") rescue "can't render enumerations" %>
 	</tbody>
 </table>
-
-<hr>

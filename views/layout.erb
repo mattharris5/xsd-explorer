@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <script src="/vendor/splitter.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/vendor/jquery.highlight-5.js" type="text/javascript" charset="utf-8"></script>
     
     <link href="/stylesheets/schemas.css" rel="stylesheet">
 </head>
@@ -31,10 +32,13 @@
                     XSD Explorer
                 </a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/schema/NADM/3.3/Report/SIFNAxSRE.xsd">xSre</a></li>
-                </ul>
+            <div class="navbar-collapse collapse">                
+                <form class="navbar-form navbar-left" role="search" id="searchForm">
+                    <div class="form-group">
+                        <input id="search" type="search" placeholder="Search" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
             </div><!--/.nav-collapse -->
         </nav>
 
@@ -51,6 +55,15 @@
         $("div.split-pane").splitter();
         
         $(".node .handle").click(function(event) {
+            $(".node").removeClass("hover active current critical-path")
+            $(this).parent().parent().addClass("current active")
+                        
+            $(this).parents(".node").each(function(elem) {
+                $(this).addClass('active critical-path')
+                $(this).prevAll().addClass('active')
+            });
+            
+            
             $("#info_panel .contents").empty()
             var attrContents = $(this).parent().siblings().children(".attributes").clone(true)
             attrContents.removeClass("hidden")
@@ -62,6 +75,15 @@
         
         $("#showXML").click(function(event) {
             $("#info_panel .code").collapse('toggle')
+        })
+        
+        $("#searchForm").on('submit', function(event) {
+            event.preventDefault()
+            $(".schema").removeHighlight()
+            $(".node-body").collapse('hide')
+            $(".node-heading").highlight($("#search").val())
+            $("mark.highlight").parents(".node-body").collapse('show')
+            $("#search").select()
         })
     });
     </script>

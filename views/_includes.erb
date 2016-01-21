@@ -1,5 +1,5 @@
 <% if node['type'] && include_node = @includes.search("//*[@name='#{node['type']}']") %>
-	<%= partial :node, collection: include_node, locals: { css_class: "include" } %>
+	<%= partial :simple_node, collection: include_node, locals: { css_class: "include" } %>
 <% end %>
 
 <% if node['base'] && base_node = @includes.search("//*[@name='#{node['base']}']") %>

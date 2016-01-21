@@ -36,10 +36,6 @@ h4 {
   margin-bottom: 0;
 }
 
-.node.hover > .node-heading > a.name {
-  background: yellow;
-}
-
 em.type {
   margin-left: 0.5em;
 }
@@ -48,13 +44,43 @@ em.type {
   font-weight: normal !important;
 }
 
-.node:hover > .node-heading {
+.node-heading:hover {
   background: rgba(0,0,255,0.05);
   border-radius: 0;
 }
 
-.node:hover > .node-body {
+/*.node:hover > .node-heading {
+  background: rgba(0,0,255,0.05);
+  border-radius: 0;
+}
+*/
+.node:hover > .node-heading > a.name {
+  font-weight: bold;
+}
+
+/*.node:hover > .node-body {
   background: rgba(0,0,255,0.01);
+}*/
+
+.node.hover > .node-heading {
+  background: rgba(0,255,0,0.1);
+  border-radius: 0;
+}
+
+.node.hover > .node-body {
+  background: rgba(0,255,0,0.02);
+}
+
+a.name {
+  font-weight: bold;
+  padding: 0 4px;
+}
+
+.node.current > .node-heading > a.name {
+  background: #337ab7;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: bold;
 }
 
 .node.extension > .node-heading > a.name::before {
@@ -62,6 +88,7 @@ em.type {
   text-transform: uppercase;
   font-size: 70%;
   margin-right: 0.25em;
+  font-weight: normal;
 }
 
 .node > .node-heading > small {
@@ -76,9 +103,10 @@ em.type {
 .schema ul {
     list-style: none;
     padding-left: 20px;
+    overflow: hidden;
 }
 
-.schema li::before, .schema li::after {
+.schema li::before, .schema li::after, .schema .node-heading::before, .schema .node-heading::after {
     content: "";
     position: absolute;
     left: -12px;
@@ -92,12 +120,28 @@ em.type {
     height: 0;
 }
 
+.node.current > .node-heading::before, .node.critical-path > .node-heading::before {
+  border-top: 2px solid #337ab7;
+  top: 9px;
+  width: 8px;
+  height: 0;
+  z-index: 10;
+}
+
 /* Vertical lines */
 .schema li::after {
     border-left: 1px solid #bfbfbf;
     height: 100%;
     width: 0px;
     top: 2px;
+}
+
+.node.active > .node-heading::after {
+  border-left: 2px solid #337ab7;
+  height: 5000px;
+  width: 0px;
+  top: -4990px;
+  z-index: 10;
 }
 
 /* Short line heading*/
@@ -143,4 +187,16 @@ a.ceds {
   background: url('/images/cedslogo_notext.jpg') no-repeat center left;
   padding-left: 20px;
   background-size: contain; 
+}
+
+mark {
+  padding: 0 1px;
+  background-color: rgba(252, 248, 227, 0.75);
+  border-bottom: 1px solid #ffe448;
+}
+
+.attributes.secondary {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-top: 1px solid #eee;
 }

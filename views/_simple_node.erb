@@ -1,4 +1,6 @@
-<% return partial(:includes, locals: { node: node }) if %w[complexContent extension].include?(node.name) %>
+<% node ||= simple_node %>
+<% return nil if %w[simpleType].include?(node.name) %>
+<% return partial(:includes, locals: { node: node }) if %w[complexContent extension sequence complexType].include?(node.name) %>
 
 <li class="simple node <%= node.name %>" id="node_<%= node.object_id %>">
 
