@@ -18,6 +18,18 @@
 			<div class="contents">
 				<h4><span class="glyphicon glyphicon-info-sign"></span> Information</h4>
 				<em>Select an item in the schema to view more information</em>
+				
+				<hr>
+				
+				<h4>Loaded Files</h4>
+				<ul class="list-unstyled">
+					<% for file in @loaded %>
+						<li>
+							<i class="glyphicon glyphicon-file text-muted"></i> 
+							<%= file.gsub(settings.root, "") %>
+						</li>
+					<% end %>
+				</ul>
 			</div>
 		</div>
 	</div>
