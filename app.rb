@@ -1,58 +1,64 @@
 require 'rubygems'
-require 'sinatra'
+require 'sinatra/base'
 require 'nokogiri'
 require 'sinatra/partial'
 require 'coderay'
 require 'uri'
 require 'erubis'
+require 'tilt/erubis'
+require 'fileutils'
+require 'resque'
+require 'yaml'
+require_relative 'lib/xsd_explorer'
+require_relative 'lib/worker'
 
-set :partial_template_engine, :erb
-enable :partial_underscores
-
-get '/' do
-  erb "<a href='/schema/NADM/3.3/Report/SIFNAxSRE.xsd'>xSre</a>"
-end
-
-get '/schema/*' do
-  schema_root = settings.root, "public", "schemas"
-  schema_file = File.join(schema_root, params['splat'])
-  include_path = File.dirname(schema_file)
-  include_file = nil
+class XsdExplorer < Sinatra::Base
+  register Sinatra::Partial
   
-  @doc = load_xml(schema_file)
-  @includes = includes
-  erb :schema
-end
+  set :partial_template_engine, :erb
+  enable :partial_underscores
 
-def load_xml(file_path)
-  if (loaded.include?(file_path))
-    puts " -> Skipping #{file_path}"
-    return nil
+  # Home Page and main index.
+  get '/' do
+    erb "<a href='/schema/NADM/3.3/Report/SIFNAxSRE.xsd'>xSre</a>"
   end
-  puts " -> Loading #{file_path}"
-  xml = Nokogiri::XML(File.open(file_path)) do |config|
-    config.noblanks.noent.xinclude.nsclean
-  end
-  xml.search("//xs:include").each do |node|
-    include_file = File.expand_path(File.join(File.dirname(file_path), node['schemaLocation']))
-    include_xml = load_xml(include_file)
-    includes.root << include_xml.root.children if include_xml
-  end
-  loaded << file_path
-  return xml
-end
 
-helpers do
-  def h(text)
-    Rack::Utils.escape_html(text)
+  # Load up a schema specified by the URL path.
+  get '/schema/*' do
+    @info = Resque.info
+    @paths = load_paths(params['splat'])
+  
+    if (File.exist?(@paths[:cache_file]) && !params[:refresh])
+      puts " -> Returning from cache: #{@paths[:cache_file]}"
+      return [200, File.read(@paths[:cache_file])]
+    elsif (File.exist?(@paths[:inprocess_file]) && !params[:refresh])
+      return [200, erb(:loading)]
+    else
+      Resque.enqueue(Worker, params['splat'])
+      return [200, erb(:loading)]
+    end
   end
   
-  def loaded
+  # Generate and cache the schema output.
+  post '/schema/*' do
     @loaded ||= []
+    @paths = load_paths(params['splat'])
+    FileUtils.touch(@paths[:inprocess_file])
+    @doc = load_xml(@paths[:schema_file])
+    @includes = includes
+    erb(:schema)
   end
-
-  def includes
-    default_file = File.join(settings.root, "views", "default.xsd")
-    @includes ||= Nokogiri.XML(File.open(default_file))
+  
+  # Helpers for sinatra
+  helpers do
+    def h(text)
+      Rack::Utils.escape_html(text)
+    end  
   end
+  
+  # start the server if ruby file executed directly
+  run! if app_file == $0
 end
+
+
+

@@ -26,7 +26,7 @@
 					<% for file in @loaded %>
 						<li>
 							<i class="glyphicon glyphicon-file text-muted"></i> 
-							<%= file.gsub(settings.root, "") %>
+							<%= file.gsub(@paths[:schema_root], "") %>
 						</li>
 					<% end %>
 				</ul>
