@@ -1,5 +1,6 @@
 <% return nil if node.text? || %w[annotation include restriction].include?(node.name) %>
 <% return partial(:simple_node, locals: { node: node }) unless %w[any].include?(node.name) || node['name'] %>
+<% Worker.update_progress(@paths[:s3_key], node) if source ||= 'doc' %>
 
 <li class="node <%= node.name %> <%= css_class rescue nil %>" id="node_<%= node.object_id %>">
 
@@ -13,7 +14,7 @@
 		<%= partial :attributes, locals: { node: node } %>
 	
 		<ul class="includes" id="node_<%= node.object_id %>_includes">
-			<%= partial :includes, locals: { node: node } %>
+			<%= partial :includes, locals: { node: node, source: 'includes' } %>
 		</ul>
 	</div>	
 	

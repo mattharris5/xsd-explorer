@@ -12,6 +12,7 @@
 
     <script src="/vendor/splitter.js" type="text/javascript" charset="utf-8"></script>
     <script src="/vendor/jquery.highlight-5.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/application.js" type="text/javascript" charset="utf-8"></script>
     
     <link href="/stylesheets/schemas.css" rel="stylesheet">
 </head>
@@ -48,46 +49,11 @@
             <%if @error then %>
             <div class="alert alert-error"><%=@error%></div>
             <% end %>
-            <%= yield %>
+            <div id="content">
+                <%= yield %>
+            </div>
         </div>
     </div>
 	
-    <script>
-    $(function() {
-        $("div.split-pane").splitter();
-        
-        $(".node .handle").click(function(event) {
-            $(".node").removeClass("hover active current critical-path")
-            $(this).parent().parent().addClass("current active")
-                        
-            $(this).parents(".node").each(function(elem) {
-                $(this).addClass('active critical-path')
-                $(this).prevAll().addClass('active')
-            });
-            
-            
-            $("#info_panel .contents").empty()
-            var attrContents = $(this).parent().siblings().children(".attributes").clone(true)
-            attrContents.removeClass("hidden")
-            $("#info_panel .contents").append(attrContents)
-            
-            if($("#showXML").prop('checked'))
-                $("#info_panel .code").collapse('show')
-        });
-        
-        $("#showXML").click(function(event) {
-            $("#info_panel .code").collapse('toggle')
-        })
-        
-        $("#searchForm").on('submit', function(event) {
-            event.preventDefault()
-            $(".schema").removeHighlight()
-            $(".node-body").collapse('hide')
-            $(".node-heading").highlight($("#search").val())
-            $("mark.highlight").parents(".node-body").collapse('show')
-            $("#search").select()
-        })
-    });
-    </script>
 </body>
 </html>

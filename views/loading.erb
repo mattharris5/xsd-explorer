@@ -5,20 +5,29 @@
 		</div>
 
 		<div class="panel-body">
-			<p>Currently generating schema <b><%= h(params['splat'].first) %></b></p>
+			<p>Generating schema <b><%= h(params['splat'].first) %></b></p>
 
 			<div class="progress">
-				<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-					<span class="sr-only">Loading...</span>
+				<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%; min-width: 1em">
+					Loading...
 				</div>
 			</div>
 			
-			<pre><%= JSON.pretty_generate @info %></pre>
-			
 			<p>
-				<center><a class="btn btn-success" href="javascript:window.location.reload(true)"><i class="glyphicon glyphicon-repeat"></i> Refresh</a></center>
+				<center><a class="btn btn-success" href="javascript:window.location=window.location.pathname"><i class="glyphicon glyphicon-repeat"></i> Refresh</a></center>
 			</p>
 		</div>
 	
 	</div>
 </div>
+
+<script>
+$(function() {
+	statusUrl = "<%= request.path.gsub(/\A\/schema/, "/status") %>"
+	refreshStatus();
+	
+	<% if @file.is_a?(Fog::Storage::AWS::File) %>
+		$( "#content" ).load( "<%= @file.public_url %>", function() { prepSchema(); })
+	<% end %>	
+})
+</script>

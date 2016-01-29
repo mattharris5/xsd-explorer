@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra/base'
 require 'nokogiri'
 require 'sinatra/partial'
+require 'sinatra/json'
 require 'coderay'
 require 'uri'
 require 'erubis'
@@ -9,6 +10,7 @@ require 'tilt/erubis'
 require 'fileutils'
 require 'resque'
 require 'yaml'
+require 'fog'
 require_relative 'lib/xsd_explorer'
 require_relative 'lib/worker'
 
@@ -27,26 +29,27 @@ class XsdExplorer < Sinatra::Base
   get '/schema/*' do
     @info = Resque.info
     @paths = load_paths(params['splat'])
-  
-    if (File.exist?(@paths[:cache_file]) && !params[:refresh])
-      puts " -> Returning from cache: #{@paths[:cache_file]}"
-      return [200, File.read(@paths[:cache_file])]
-    elsif (File.exist?(@paths[:inprocess_file]) && !params[:refresh])
-      return [200, erb(:loading)]
-    else
-      Resque.enqueue(Worker, params['splat'])
-      return [200, erb(:loading)]
-    end
+    @status = processing_status(@paths)
+    @file = params[:refresh] ? nil : cached_file_header(@paths)
+    Resque.enqueue(Worker, params['splat']) unless @file
+    erb(:loading)
   end
   
   # Generate and cache the schema output.
   post '/schema/*' do
     @loaded ||= []
     @paths = load_paths(params['splat'])
-    FileUtils.touch(@paths[:inprocess_file])
+    Worker.update_progress @paths[:s3_key], 0
     @doc = load_xml(@paths[:schema_file])
+    Worker.update_ceiling @paths[:s3_key], @doc.xpath('.//*[not(*)]').size
     @includes = includes
-    erb(:schema)
+    erb(:schema, layout: false)
+  end
+  
+  # Get a json representation of the current processing status
+  get '/status/*' do
+    @paths = load_paths(params['splat'])
+    json processing_status(@paths)
   end
   
   # Helpers for sinatra
