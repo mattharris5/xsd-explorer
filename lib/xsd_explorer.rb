@@ -67,18 +67,22 @@ def save_cached_file(paths)
     :public => true
   )
   puts " -> Persisted cache file to S3: #{cache_file_token.public_url}"
+  Resque.redis.hset('location', paths[:s3_key], cache_file_token.public_url)
 end
 
 # Returns the cached file header - which is really a Fog::Storage::AWS::File.
 def cached_file_header(paths)
   f = paths[:s3_root].files.head(paths[:s3_key])
+  Resque.redis.hset('location', paths[:s3_key], f.public_url) if f
+  return f
 end
 
 # Returns the current value of the processing queue for the requested file.
 def processing_status(paths)
   status = {
-    current: Resque.redis.hget('processing', paths[:s3_key]).to_f,
-    max:     Resque.redis.hget('ceiling', paths[:s3_key]).to_f,
+    current:  Resque.redis.hget('processing', paths[:s3_key]).to_f,
+    max:      Resque.redis.hget('ceiling', paths[:s3_key]).to_f,
+    location: Resque.redis.hget('location', paths[:s3_key]),
     complete: false
   }
   status[:progress] = status[:current] / status[:max]
@@ -86,6 +90,7 @@ def processing_status(paths)
     status[:progress] = nil
   else
     status[:progress] = (status[:progress] * 100).floor
+    status[:progress] = 100 if status[:progress] > 100
     status[:complete] = true if status[:progress] > 99
   end
   return status

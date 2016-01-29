@@ -24,10 +24,6 @@
 <script>
 $(function() {
 	statusUrl = "<%= request.path.gsub(/\A\/schema/, "/status") %>"
-	refreshStatus();
-	
-	<% if @file.is_a?(Fog::Storage::AWS::File) %>
-		$( "#content" ).load( "<%= @file.public_url %>", function() { prepSchema(); })
-	<% end %>	
+	refreshStatus();	
 })
 </script>

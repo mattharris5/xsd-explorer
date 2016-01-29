@@ -40,16 +40,22 @@ var statusUrl;
 
 function refreshStatus() {
   $.getJSON( statusUrl, function(data) {
+    console.log(data)
+    
     if (data.progress) {
       $( ".progress > .progress-bar" )
         .removeClass( "active progress-bar-striped" )
         .css( 'width', data.progress + '%' )
         .text( data.progress + '%')
-      
-      if (data.progress > 99) {
-        window.location = window.location.pathname
-      }
     }
-    setTimeout(refreshStatus, 1000)
+    
+    // Done processing and we've got a cache location - go fetch it.
+    if (data.location)
+      $( "#content" ).load( data.location, function() { prepSchema(); })
+      
+    // Otherwise, retry again in 1 sec.
+    else
+      setTimeout(refreshStatus, 1000)
+    
   })
 }
