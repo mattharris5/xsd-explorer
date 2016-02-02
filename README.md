@@ -1,3 +1,4 @@
+# XSD Explorer
 XSD Explorer allows a user to browse through an XML Schema in a web browser. The output is entirely HTML and JavaScript, which creates a simple and clean interface for exploring a potentially complex XML schema. Schema `include` files are loaded and incorporated so that base types and extensions are shown within the schema tree. Attributes, documentation and enumerations are displayed in an information pane on the screen, and the underlying XML structure for a particular element can be inspected easily.
 
 The app runs Ruby on the lightweight [Sinatra](http://www.sinatrarb.com) framework and uses [Nokogiri](http://nokogiri.org) to parse the XSD and [Twitter Bootstrap](http://getbootstrap.com) to create the UI. When a schema is requested, the HTML is generated in the background and persisted to S3, where it is served for future display on screen.
