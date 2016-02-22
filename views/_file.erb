@@ -1,0 +1,14 @@
+<li>
+	<% if File.directory?(file) %>
+	
+		<%= File.basename(file) %>
+		<ul>
+			<%= partial(:file, collection: list_files(file + "/*")) %>
+		</ul>
+	
+	<% else %>
+	
+		<a href="/schema<%= file.gsub(@paths[:schema_root], "") %>"><%= File.basename(file) %></a>
+	
+	<% end %>
+</li>

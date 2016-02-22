@@ -19,6 +19,8 @@ function prepSchema() {
     
       if($("#showXML").prop('checked'))
           $("#info_panel .code").collapse('show')
+          
+      $('#info_panel [data-toggle="tooltip"]').tooltip()
   });
 
   $("#showXML").click(function(event) {
@@ -32,13 +34,16 @@ function prepSchema() {
       $(".node-heading").highlight($("#search").val())
       $("mark.highlight").parents(".node-body").collapse('show')
       $("#search").select()
-  })
-
+  })  
 }
 
 var statusUrl;
+var directLoad = false;
 
 function refreshStatus() {
+  if (directLoad == true)
+      return loadIntoContent( window.location.pathname, { mode: "direct" } )
+      
   $.getJSON( statusUrl, function(data) {
     console.log(data)
     
@@ -50,12 +55,17 @@ function refreshStatus() {
     }
     
     // Done processing and we've got a cache location - go fetch it.
-    if (data.location)
-      $( "#content" ).load( data.location, function() { prepSchema(); })
+    if (data.location) {
+      $( ".progress > .progress-bar" ).addClass( "active progress-bar-striped" )
+      loadIntoContent(data.location)
       
     // Otherwise, retry again in 1 sec.
-    else
+    } else {
       setTimeout(refreshStatus, 1000)
-    
+    }
   })
+}
+
+function loadIntoContent(resultLocation, data) {
+    $( "#content" ).load( resultLocation, data, function() { prepSchema(); })
 }

@@ -23,6 +23,7 @@
 
 <script>
 $(function() {
+	<%= "directLoad = true;" if @load_direct %>
 	statusUrl = "<%= request.path.gsub(/\A\/schema/, "/status") %>"
 	refreshStatus();	
 })

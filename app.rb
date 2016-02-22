@@ -13,6 +13,7 @@ require 'yaml'
 require 'fog'
 require_relative 'lib/xsd_explorer'
 require_relative 'lib/worker'
+require_relative 'lib/helpers'
 
 class XsdExplorer < Sinatra::Base
   register Sinatra::Partial
@@ -22,7 +23,9 @@ class XsdExplorer < Sinatra::Base
 
   # Home Page and main index.
   get '/' do
-    erb "<a href='/schema/NADM/3.3/Report/SIFNAxSRE.xsd'>xSre</a>"
+    @paths = load_paths(["/"], false)
+    @files = list_files("#{@paths[:schema_root]}/NADM/*")
+    erb(:index)
   end
 
   # Load up a schema specified by the URL path.
@@ -31,6 +34,8 @@ class XsdExplorer < Sinatra::Base
     @paths = load_paths(params['splat'])
     @status = processing_status(@paths)
     @file = params[:refresh] ? nil : cached_file_header(@paths)
+    @load_direct = params[:direct]
+    Resque.redis.hdel('location', @paths[:s3_key]) if params[:refresh]
     Resque.enqueue(Worker, params['splat']) unless @file
     erb(:loading)
   end
@@ -53,11 +58,7 @@ class XsdExplorer < Sinatra::Base
   end
   
   # Helpers for sinatra
-  helpers do
-    def h(text)
-      Rack::Utils.escape_html(text)
-    end  
-  end
+  helpers Helpers
   
   # start the server if ruby file executed directly
   run! if app_file == $0

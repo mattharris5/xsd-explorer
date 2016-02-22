@@ -1,15 +1,15 @@
 @loaded ||= []
 
 # Returns a hash with the appropriate file paths for the provided splat.
-def load_paths(splat)
+def load_paths(splat, include_s3 = true)
   paths = {}
   paths[:root] = File.expand_path(File.join([File.dirname(__FILE__), ".."]))
   paths[:schema_root] = File.join([paths[:root], "public", "schemas"])
   paths[:schema_file] = File.join([paths[:schema_root], splat])
   paths[:include_path] = File.dirname(paths[:schema_file])
   paths[:cache_file] = File.join([paths[:root], "cache", splat])
-  paths[:s3_root] = s3.directories.get(ENV['S3_BUCKET_NAME'])
-  paths[:s3_key] = "cache/" + (ENV['RACK_ENV'] || 'develoment') + "/" + splat.join("/")
+  paths[:s3_root] = s3.directories.get(ENV['S3_BUCKET_NAME']) if include_s3
+  paths[:s3_key] = "cache/" + (ENV['RACK_ENV'] || 'develoment') + "/" + splat.join("/") if include_s3
   
   dirname = File.dirname(paths[:cache_file])
   unless File.directory?(dirname)
@@ -94,4 +94,9 @@ def processing_status(paths)
     status[:complete] = true if status[:progress] > 99
   end
   return status
+end
+
+# Returns the list of files for the requested path, stripping out '.' directories and non-XSD files.
+def list_files(path)
+  Dir.glob(path).reject{ |f| f.start_with?(".") || %w[md].include?(File.extname(f)) }
 end

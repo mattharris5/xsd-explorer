@@ -1,8 +1,8 @@
-<dt><%= annotation.name %></dt>
-<dd>
-	<% if annotation.text =~ /\A#{URI::regexp(['http', 'https'])}\z/ %>
-		<a class="ceds" href="<%= annotation.text %>" target="_blank"><%= annotation.text %></a>
-	<% else %>
-		<%= annotation.text %>
+<dt><%= annotation.name %>
+	<% if annotation.name == 'sifChar' %>
+		<a href="#" data-toggle="tooltip" data-placement="bottom" title="Describes the obligation of an element: whether it is Optional, Mandatory, Optional Required, Mandatory Required, or Conditional. This information can be inferred from the XSD, but it is easier for automated generation of documentation to give it explicitly. Applies only to elements and not to types.">
+			<span class="glyphicon glyphicon-info-sign text-muted"></span>
+		</a>
 	<% end %>
-</dd>
+</dt>
+<dd><%= annotationValue(annotation.name, annotation.text) %></dd>

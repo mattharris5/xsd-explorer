@@ -1,3 +1,4 @@
+ruby "2.2.4"
 source 'https://rubygems.org'
 
 gem 'sinatra'
@@ -11,3 +12,4 @@ gem 'erubis'
 gem 'resque'
 gem 'rake'
 gem 'fog'
+gem 'dotenv'

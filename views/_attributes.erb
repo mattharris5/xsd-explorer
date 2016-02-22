@@ -10,7 +10,7 @@
 	<dl class="dl-horizontal text-muted clearfix">
 		<% for key, value in node.attributes %>
 		<dt><%= key %></dt>
-		<dd><%= key == 'type' ? "<code>#{value}</code>" : value %></dd>
+		<dd><%= attributeValue(key, value) %></dd>
 		<% end %>
 
 		<%= partial :annotation, collection: node.search("./xs:annotation/xs:appinfo/*") rescue "can't render annotation" %>
