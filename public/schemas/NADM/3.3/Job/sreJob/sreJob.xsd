@@ -1,0 +1,143 @@
+<!-- version 3.03.02 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="../../SIFglobal.xsd"/>
+	<xs:include schemaLocation="../SIFJobCommonTypes.xsd"/>
+	<xs:complexType name="sreJobType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Student Record Exchange Job Type</elementName>
+				<events>no</events>
+				<isSIFObject>no</isSIFObject>
+			</xs:appinfo>
+			<xs:documentation>
+				A Student Record Exchange (SRE) job tracks the status of moving a student's full student record from a SIF service provider. The process includes four basic phases: 1) Creating the job; 2) Requesting permission to obtain the record; 3) Fetching the record; 4) and Sending a receipt back to the responder. The Job object stores the metadata necessary for tracking this multi-phase process.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gSIF_JobType">
+				<xs:sequence>
+					<xs:element name="otherStatuses" minOccurs="1">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="permissionRequest" minOccurs="0" maxOccurs="1">
+									<xs:annotation>
+										<xs:appinfo>
+											<elementName>Permission Request Status</elementName>
+											<sifChar>OR</sifChar>
+										</xs:appinfo>
+										<xs:documentation>
+											The status of the permission request step.
+										</xs:documentation>
+									</xs:annotation>
+									<xs:restriction base="xs:token">
+										<xs:enumeration value="Not Started"/>
+										<xs:enumeration value="Requested"/>
+										<xs:enumeration value="Approved"/>
+										<xs:enumeration value="Denied"/>
+										<xs:enumeration value="Partially Approved"/>
+									</xs:restriction>
+								</xs:element>
+								<xs:element name="sre" minOccurs="0" maxOccurs="1">
+									<xs:annotation>
+										<xs:appinfo>
+											<elementName>Student Record Object Status</elementName>
+											<sifChar>OR</sifChar>
+										</xs:appinfo>
+										<xs:documentation>
+											The status of the fetching the student record object.
+										</xs:documentation>
+									</xs:annotation>
+									<xs:restriction base="xs:token">
+										<xs:enumeration value="Not Started"/>
+										<xs:enumeration value="In Progress"/>
+										<xs:enumeration value="Complete"/>
+									</xs:restriction>
+								</xs:element>
+								<xs:element name="receipt" minOccurs="0" maxOccurs="1">
+									<xs:annotation>
+										<xs:appinfo>
+											<elementName>Receipt Status</elementName>
+											<sifChar>OR</sifChar>
+										</xs:appinfo>
+										<xs:documentation>
+											The status of returning a receipt object to the provider.
+										</xs:documentation>
+									</xs:annotation>
+									<xs:restriction base="xs:token">
+										<xs:enumeration value="Not Started"/>
+										<xs:enumeration value="In Progress"/>
+										<xs:enumeration value="Complete"/>
+									</xs:restriction>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="requesterEmailAddress" type="gEmailType" minOccurs="1">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Requester Email Address</elementName>
+								<sifChar>M</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>
+								A valid e-mail address at the organization making the request.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="requesterOrganizationRefId" type="gGenericRefIdPointerType" minOccurs="1">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Requester Organization RefId</elementName>
+								<sifChar>M</sifChar>
+							</xs:appinfo>
+							<xs:documentation>
+								The refId of the organization (LEA, School or SEA) responsible for the request that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="providerEmailAddress" type="gEmailType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Provider Email Address</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>
+								A valid e-mail address at the organization providing the records.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="providerOrganizationRefId" type="gGenericRefIdPointerType" minOccurs="1">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Provider Organization RefId</elementName>
+								<sifChar>M</sifChar>
+							</xs:appinfo>
+							<xs:documentation>
+								The refId of the organization (LEA, School or SEA) responsible for providing the student records, that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="studentId" type="xs:token" minOccurs="1">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Student ID</elementName>
+								<sifChar>M</sifChar>
+								<cedsId>001071</cedsId>
+								<cedsURL>
+									https://ceds.ed.gov/CEDSElementDetails.aspx?TermxTopicId=20775
+								</cedsURL>
+							</xs:appinfo>
+							<xs:documentation>
+								The ID of student whose records are being requested that is resolvable by the provider, which is a unique number or alphanumeric code assigned to a student by a school, school system, a state, or other agency or entity.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="sreJob" type="sreJobType"/>
+</xs:schema>

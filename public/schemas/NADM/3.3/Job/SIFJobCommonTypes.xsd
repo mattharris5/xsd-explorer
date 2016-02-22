@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--version 3.03.01-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:complexType name="gSIF_JobType">
+		<xs:annotation>
+			<xs:documentation>The root object of SIF Job objects, used some functional services. The Job object maintains the current status and attributes of a specific job in a SIF3 functional service.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1">
+			<xs:attribute name="refId" type="gRefIdType" use="required"/>
+			<xs:element name="status" minOccurs="1">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Job Status</elementName>
+						<sifChar>M</sifChar>
+					</xs:appinfo>
+					<xs:documentation>
+						The status of the overall job.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="Pending"/>
+					<xs:enumeration value="In Progress"/>
+					<xs:enumeration value="Complete"/>
+					
+					
+					<xs:enumeration value="Not Started">
+						<xs:annotation>
+							<xs:appinfo>The job is created but processing may not have started yet. The actor responsible for handling this job should begin processing and change the status to "In Progress".</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					
+					
+					
+					 This means that the job workflow has completed and this job is no longer considered active. After a job is completed, consumers can no longer interact with it. Job "completion" does not necessarily indicate that a process was successfully completed or approved; instead, the 'statuses' element is used to provide this information. Note: if Completion Date is supplied, the boolean 'completed' flag should also be marked as true.
+				</xs:restriction>
+			</xs:element>
+			<xs:element name="name" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Job Name</elementName>
+						<sifChar>O</sifChar>
+					</xs:appinfo>
+					<xs:documentation>
+						A human readable identifier for the job. Example: "John Smith Transfer 01-25-14".
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="creationDate" type="xs:date" minOccurs="1">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Creation Date</elementName>
+						<sifChar>M</sifChar>
+					</xs:appinfo>
+					<xs:documentation>The year, month and day the job was created.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="completionDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Completion Date</elementName>
+						<sifChar>O</sifChar>
+					</xs:appinfo>
+					<xs:documentation>The year, month and day the job was completed.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:any namespace="##other" processContents="strict" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>SIF extention point</xs:documentation>
+				</xs:annotation>
+			</xs:any>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
