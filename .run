@@ -1,0 +1,1 @@
+default: "dotenv ruby app.rb"

@@ -1,0 +1,3364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SIF xPress Common Type Definitions -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="../SIFglobal.xsd"/>
+	<xs:simpleType name="xAddressTypeForLearnerOrFamilyType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Address Type For Learner Or Family Type</elementName>
+				<cedsId>000010</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000010</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The type of address listed for a learner or a parent, guardian, family member or related person.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Mailing"/>
+			<xs:enumeration value="Physical"/>
+			<xs:enumeration value="Shipping"/>
+			<xs:enumeration value="Billing"/>
+			<xs:enumeration value="OnCampus"/>
+			<xs:enumeration value="OffCampus"/>
+			<xs:enumeration value="PermanentStudent"/>
+			<xs:enumeration value="PermanentAdmission"/>
+			<xs:enumeration value="FatherAddress"/>
+			<xs:enumeration value="MotherAddress"/>
+			<xs:enumeration value="GuardianAddress"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="xAddressTypeForOrganizationType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Address Type For Organization Type</elementName>
+				<cedsId>001066</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/001066</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The type of address listed for an organization. Generally the mailing address.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Mailing"/>
+			<xs:enumeration value="Physical"/>
+			<xs:enumeration value="Shipping"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="xStateCodeUSType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>State Code US Type</elementName>
+				<cedsId>000267</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000267</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The abbreviation for the state in which an address is located.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="AK"/>
+			<xs:enumeration value="AL"/>
+			<xs:enumeration value="AR"/>
+			<xs:enumeration value="AS"/>
+			<xs:enumeration value="AZ"/>
+			<xs:enumeration value="CA"/>
+			<xs:enumeration value="CO"/>
+			<xs:enumeration value="CT"/>
+			<xs:enumeration value="DC"/>
+			<xs:enumeration value="DE"/>
+			<xs:enumeration value="FL"/>
+			<xs:enumeration value="FM"/>
+			<xs:enumeration value="GA"/>
+			<xs:enumeration value="GU"/>
+			<xs:enumeration value="HI"/>
+			<xs:enumeration value="IA"/>
+			<xs:enumeration value="ID"/>
+			<xs:enumeration value="IL"/>
+			<xs:enumeration value="IN"/>
+			<xs:enumeration value="KS"/>
+			<xs:enumeration value="KY"/>
+			<xs:enumeration value="LA"/>
+			<xs:enumeration value="MA"/>
+			<xs:enumeration value="MD"/>
+			<xs:enumeration value="ME"/>
+			<xs:enumeration value="MH"/>
+			<xs:enumeration value="MI"/>
+			<xs:enumeration value="MN"/>
+			<xs:enumeration value="MO"/>
+			<xs:enumeration value="MP"/>
+			<xs:enumeration value="MS"/>
+			<xs:enumeration value="MT"/>
+			<xs:enumeration value="NC"/>
+			<xs:enumeration value="ND"/>
+			<xs:enumeration value="NE"/>
+			<xs:enumeration value="NH"/>
+			<xs:enumeration value="NJ"/>
+			<xs:enumeration value="NM"/>
+			<xs:enumeration value="NV"/>
+			<xs:enumeration value="NY"/>
+			<xs:enumeration value="OH"/>
+			<xs:enumeration value="OK"/>
+			<xs:enumeration value="OR"/>
+			<xs:enumeration value="PA"/>
+			<xs:enumeration value="PR"/>
+			<xs:enumeration value="PW"/>
+			<xs:enumeration value="RI"/>
+			<xs:enumeration value="SC"/>
+			<xs:enumeration value="SD"/>
+			<xs:enumeration value="TN"/>
+			<xs:enumeration value="TX"/>
+			<xs:enumeration value="UT"/>
+			<xs:enumeration value="VA"/>
+			<xs:enumeration value="VI"/>
+			<xs:enumeration value="VT"/>
+			<xs:enumeration value="WA"/>
+			<xs:enumeration value="WI"/>
+			<xs:enumeration value="WV"/>
+			<xs:enumeration value="WY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="xStateSuperCodeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>State Super Code Type</elementName>
+				<cedsId/>
+				<cedsURL>https://ceds.ed.gov/element/</cedsURL>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:union memberTypes="xStateCodeUSType"/>
+		<!-- used to aggregate multiple state/province codes if needed -->
+	</xs:simpleType>
+	<xs:simpleType name="xCountryCodeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Country Code</elementName>
+				<cedsId>000050</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000050</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The unique two character International Organization for Standardization (ISO) code for the country in which an address is located.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="AF"/>
+			<xs:enumeration value="AX"/>
+			<xs:enumeration value="AL"/>
+			<xs:enumeration value="DZ"/>
+			<xs:enumeration value="AS"/>
+			<xs:enumeration value="AD"/>
+			<xs:enumeration value="AO"/>
+			<xs:enumeration value="AI"/>
+			<xs:enumeration value="AQ"/>
+			<xs:enumeration value="AG"/>
+			<xs:enumeration value="AR"/>
+			<xs:enumeration value="AM"/>
+			<xs:enumeration value="AW"/>
+			<xs:enumeration value="AU"/>
+			<xs:enumeration value="AT"/>
+			<xs:enumeration value="AZ"/>
+			<xs:enumeration value="BS"/>
+			<xs:enumeration value="BH"/>
+			<xs:enumeration value="BD"/>
+			<xs:enumeration value="BB"/>
+			<xs:enumeration value="BY"/>
+			<xs:enumeration value="BE"/>
+			<xs:enumeration value="BZ"/>
+			<xs:enumeration value="BJ"/>
+			<xs:enumeration value="BM"/>
+			<xs:enumeration value="BT"/>
+			<xs:enumeration value="BO"/>
+			<xs:enumeration value="BQ"/>
+			<xs:enumeration value="BA"/>
+			<xs:enumeration value="BW"/>
+			<xs:enumeration value="BV"/>
+			<xs:enumeration value="BR"/>
+			<xs:enumeration value="IO"/>
+			<xs:enumeration value="BN"/>
+			<xs:enumeration value="BG"/>
+			<xs:enumeration value="BF"/>
+			<xs:enumeration value="BI"/>
+			<xs:enumeration value="KH"/>
+			<xs:enumeration value="CM"/>
+			<xs:enumeration value="CA"/>
+			<xs:enumeration value="CV"/>
+			<xs:enumeration value="KY"/>
+			<xs:enumeration value="CF"/>
+			<xs:enumeration value="TD"/>
+			<xs:enumeration value="CL"/>
+			<xs:enumeration value="CN"/>
+			<xs:enumeration value="CX"/>
+			<xs:enumeration value="CC"/>
+			<xs:enumeration value="CO"/>
+			<xs:enumeration value="KM"/>
+			<xs:enumeration value="CG"/>
+			<xs:enumeration value="CD"/>
+			<xs:enumeration value="CK"/>
+			<xs:enumeration value="CR"/>
+			<xs:enumeration value="CI"/>
+			<xs:enumeration value="HR"/>
+			<xs:enumeration value="CU"/>
+			<xs:enumeration value="CW"/>
+			<xs:enumeration value="CY"/>
+			<xs:enumeration value="CZ"/>
+			<xs:enumeration value="DK"/>
+			<xs:enumeration value="DJ"/>
+			<xs:enumeration value="DM"/>
+			<xs:enumeration value="DO"/>
+			<xs:enumeration value="EC"/>
+			<xs:enumeration value="EG"/>
+			<xs:enumeration value="SV"/>
+			<xs:enumeration value="GQ"/>
+			<xs:enumeration value="ER"/>
+			<xs:enumeration value="EE"/>
+			<xs:enumeration value="ET"/>
+			<xs:enumeration value="FK"/>
+			<xs:enumeration value="FO"/>
+			<xs:enumeration value="FJ"/>
+			<xs:enumeration value="FI"/>
+			<xs:enumeration value="FR"/>
+			<xs:enumeration value="GF"/>
+			<xs:enumeration value="PF"/>
+			<xs:enumeration value="TF"/>
+			<xs:enumeration value="GA"/>
+			<xs:enumeration value="GM"/>
+			<xs:enumeration value="GE"/>
+			<xs:enumeration value="DE"/>
+			<xs:enumeration value="GH"/>
+			<xs:enumeration value="GI"/>
+			<xs:enumeration value="GR"/>
+			<xs:enumeration value="GL"/>
+			<xs:enumeration value="GD"/>
+			<xs:enumeration value="GP"/>
+			<xs:enumeration value="GU"/>
+			<xs:enumeration value="GT"/>
+			<xs:enumeration value="GG"/>
+			<xs:enumeration value="GN"/>
+			<xs:enumeration value="GW"/>
+			<xs:enumeration value="GY"/>
+			<xs:enumeration value="HT"/>
+			<xs:enumeration value="HM"/>
+			<xs:enumeration value="VA"/>
+			<xs:enumeration value="HN"/>
+			<xs:enumeration value="HK"/>
+			<xs:enumeration value="HU"/>
+			<xs:enumeration value="IS"/>
+			<xs:enumeration value="IN"/>
+			<xs:enumeration value="ID"/>
+			<xs:enumeration value="IR"/>
+			<xs:enumeration value="IQ"/>
+			<xs:enumeration value="IE"/>
+			<xs:enumeration value="IM"/>
+			<xs:enumeration value="IL"/>
+			<xs:enumeration value="IT"/>
+			<xs:enumeration value="JM"/>
+			<xs:enumeration value="JP"/>
+			<xs:enumeration value="JE"/>
+			<xs:enumeration value="JO"/>
+			<xs:enumeration value="KZ"/>
+			<xs:enumeration value="KE"/>
+			<xs:enumeration value="KI"/>
+			<xs:enumeration value="KP"/>
+			<xs:enumeration value="KR"/>
+			<xs:enumeration value="KW"/>
+			<xs:enumeration value="KG"/>
+			<xs:enumeration value="LA"/>
+			<xs:enumeration value="LV"/>
+			<xs:enumeration value="LB"/>
+			<xs:enumeration value="LS"/>
+			<xs:enumeration value="LR"/>
+			<xs:enumeration value="LY"/>
+			<xs:enumeration value="LI"/>
+			<xs:enumeration value="LT"/>
+			<xs:enumeration value="LU"/>
+			<xs:enumeration value="MO"/>
+			<xs:enumeration value="MK"/>
+			<xs:enumeration value="MG"/>
+			<xs:enumeration value="MW"/>
+			<xs:enumeration value="MY"/>
+			<xs:enumeration value="MV"/>
+			<xs:enumeration value="ML"/>
+			<xs:enumeration value="MT"/>
+			<xs:enumeration value="MH"/>
+			<xs:enumeration value="MQ"/>
+			<xs:enumeration value="MR"/>
+			<xs:enumeration value="MU"/>
+			<xs:enumeration value="YT"/>
+			<xs:enumeration value="MX"/>
+			<xs:enumeration value="FM"/>
+			<xs:enumeration value="MD"/>
+			<xs:enumeration value="MC"/>
+			<xs:enumeration value="MN"/>
+			<xs:enumeration value="ME"/>
+			<xs:enumeration value="MS"/>
+			<xs:enumeration value="MA"/>
+			<xs:enumeration value="MZ"/>
+			<xs:enumeration value="MM"/>
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="NR"/>
+			<xs:enumeration value="NP"/>
+			<xs:enumeration value="NL"/>
+			<xs:enumeration value="NC"/>
+			<xs:enumeration value="NZ"/>
+			<xs:enumeration value="NI"/>
+			<xs:enumeration value="NE"/>
+			<xs:enumeration value="NG"/>
+			<xs:enumeration value="NU"/>
+			<xs:enumeration value="NF"/>
+			<xs:enumeration value="MP"/>
+			<xs:enumeration value="NO"/>
+			<xs:enumeration value="OM"/>
+			<xs:enumeration value="PK"/>
+			<xs:enumeration value="PW"/>
+			<xs:enumeration value="PS"/>
+			<xs:enumeration value="PA"/>
+			<xs:enumeration value="PG"/>
+			<xs:enumeration value="PY"/>
+			<xs:enumeration value="PE"/>
+			<xs:enumeration value="PH"/>
+			<xs:enumeration value="PN"/>
+			<xs:enumeration value="PL"/>
+			<xs:enumeration value="PT"/>
+			<xs:enumeration value="PR"/>
+			<xs:enumeration value="QA"/>
+			<xs:enumeration value="RE"/>
+			<xs:enumeration value="RO"/>
+			<xs:enumeration value="RU"/>
+			<xs:enumeration value="RW"/>
+			<xs:enumeration value="BL"/>
+			<xs:enumeration value="SH"/>
+			<xs:enumeration value="KN"/>
+			<xs:enumeration value="LC"/>
+			<xs:enumeration value="MF"/>
+			<xs:enumeration value="PM"/>
+			<xs:enumeration value="VC"/>
+			<xs:enumeration value="WS"/>
+			<xs:enumeration value="SM"/>
+			<xs:enumeration value="ST"/>
+			<xs:enumeration value="SA"/>
+			<xs:enumeration value="SN"/>
+			<xs:enumeration value="RS"/>
+			<xs:enumeration value="SC"/>
+			<xs:enumeration value="SL"/>
+			<xs:enumeration value="SG"/>
+			<xs:enumeration value="SX"/>
+			<xs:enumeration value="SK"/>
+			<xs:enumeration value="SI"/>
+			<xs:enumeration value="SB"/>
+			<xs:enumeration value="SO"/>
+			<xs:enumeration value="ZA"/>
+			<xs:enumeration value="GS"/>
+			<xs:enumeration value="SS"/>
+			<xs:enumeration value="ES"/>
+			<xs:enumeration value="LK"/>
+			<xs:enumeration value="SD"/>
+			<xs:enumeration value="SR"/>
+			<xs:enumeration value="SJ"/>
+			<xs:enumeration value="SZ"/>
+			<xs:enumeration value="SE"/>
+			<xs:enumeration value="CH"/>
+			<xs:enumeration value="SY"/>
+			<xs:enumeration value="TW"/>
+			<xs:enumeration value="TJ"/>
+			<xs:enumeration value="TZ"/>
+			<xs:enumeration value="TH"/>
+			<xs:enumeration value="TL"/>
+			<xs:enumeration value="TG"/>
+			<xs:enumeration value="TK"/>
+			<xs:enumeration value="TO"/>
+			<xs:enumeration value="TT"/>
+			<xs:enumeration value="TN"/>
+			<xs:enumeration value="TR"/>
+			<xs:enumeration value="TM"/>
+			<xs:enumeration value="TC"/>
+			<xs:enumeration value="TV"/>
+			<xs:enumeration value="UG"/>
+			<xs:enumeration value="UA"/>
+			<xs:enumeration value="AE"/>
+			<xs:enumeration value="GB"/>
+			<xs:enumeration value="US"/>
+			<xs:enumeration value="UM"/>
+			<xs:enumeration value="UY"/>
+			<xs:enumeration value="UZ"/>
+			<xs:enumeration value="VU"/>
+			<xs:enumeration value="VE"/>
+			<xs:enumeration value="VN"/>
+			<xs:enumeration value="VG"/>
+			<xs:enumeration value="VI"/>
+			<xs:enumeration value="WF"/>
+			<xs:enumeration value="EH"/>
+			<xs:enumeration value="YE"/>
+			<xs:enumeration value="ZM"/>
+			<xs:enumeration value="ZW"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xOtherPersonAddressListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Other Person Address List</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A List of other addresses for the person.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xPersonAddressType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Person Address</elementName>
+						<sifChar>M</sifChar>
+						<cedsId>000010</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000010</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The types of previous, alternate or other address for a person. Generally another residence or mailing address.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xPersonAddressType">
+		<xs:sequence>
+			<xs:element name="addressType" type="xAddressTypeForLearnerOrFamilyType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Address Type</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000010</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000010</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The type of address listed for a learner or a parent, guardian, family member or related person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="line1" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Address Line1</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000269</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000269</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The first line of the address.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="line2" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Address Line 2</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000019</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000019</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The second line of the address.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="city" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>City</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>00040</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/00040</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The name of the city in which an address is located.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="stateProvince" type="xStateCodeUSType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>State-Province</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000267</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000267</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The abbreviation for the state, province or outlying area in which an address is located.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="countryCode" type="xCountryCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Country Code</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000050</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000050</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The unique two character International Organization for Standardization (ISO) code for the country in which an address is located.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postalCode" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Postal Code</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000214</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000214</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A number that identifies each postal delivery area in the locale used as a portion of an address.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xOrganizationAddressType">
+		<xs:sequence>
+			<xs:element name="addressType" type="xAddressTypeForOrganizationType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Address Type</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001066</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001066</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The type of address listed for an organization. Generally the mailing address.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="line1" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Address Line 1</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000269</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000269</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The first line of the address.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="line2" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Address Line 2</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000019</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000019</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The second line of the address.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="city" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>City</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000040</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000040</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The name of the city in which an address is located.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="stateProvince" type="xStateCodeUSType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>State-Province Code</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000267</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000267</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The abbreviation for the state, province or outlying area in which an address is located.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="countryCode" type="xCountryCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Country Code</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000050</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000050</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The unique two character International Organization for Standardization (ISO) code for the country in which an address is located.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="postalCode" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Postal Code</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000214</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000214</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A number that identifies each postal delivery area in the locale used as a portion of an address.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xTelephoneTypeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Telephone Type</elementName>
+				<cedsId>000279</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000279</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The telephone number including the area code, and extension, if applicable.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Home"/>
+			<xs:enumeration value="Work"/>
+			<xs:enumeration value="Mobile"/>
+			<xs:enumeration value="Fax"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="Text"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xTelephoneType">
+		<xs:sequence>
+			<xs:element name="phoneNumberType" type="xTelephoneTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Phone Number Type</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000280</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000280</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The type of communication number listed for a person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="number" type="xs:token">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Telephone Number</elementName>
+						<sifChar>M</sifChar>
+						<cedsId>000279</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000279</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The telephone number including the area code, and extension, if applicable.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="primaryIndicator" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Primary Indicator</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000219</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000219</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>An indication that the telephone number should be used as the principal number for a person or organization.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xTelephoneListType">
+		<xs:sequence>
+			<xs:element name="phoneNumber" type="xTelephoneType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Phone Number</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000279</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000279</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The telephone number including the area code, and extension, if applicable.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xEmailTypeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Email Type</elementName>
+				<cedsId>000089</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000089</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The type of electronic mail (e-mail) address listed for a person or organization.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Home"/>
+			<xs:enumeration value="Work"/>
+			<xs:enumeration value="Organizational"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xEmailType">
+		<xs:sequence>
+			<xs:element name="emailType" type="xEmailTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Email Type</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000089</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000089</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The type of electronic mail (e-mail) address listed for a person or organization.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="emailAddress" type="xs:token">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Email Address</elementName>
+						<sifChar>M</sifChar>
+						<cedsId>000088</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000088</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The numbers, letters, and symbols used to identify an electronic mail (e-mail) user within the network to which the person or organization belongs.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xEmailListType">
+		<xs:sequence>
+			<xs:element name="email" type="xEmailType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Email</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000088</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000088</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The numbers, letters, and symbols used to identify an electronic mail (e-mail) user within the network to which the person or organization belongs.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xSexType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Sex</elementName>
+				<cedsId>000255</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000255</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The concept describing the biological traits that distinguish the males and females of a species.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Male"/>
+			<xs:enumeration value="Female"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xDemographicsType">
+		<xs:sequence>
+			<xs:element name="races" type="xRaceListType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Race List</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>A list of races.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="hispanicLatinoEthnicity" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Hispanic or Latino Ethnicity</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000144</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000144</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>An indication that the person traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central and South America, and other Spanish cultures, regardless of race.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sex" type="xSexType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Sex</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000255</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000255</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The concept describing the biological traits that distinguish the males and females of a species.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="birthDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Birth Date</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000033</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000033</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The year, month and day on which a person was born.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="countryOfBirth" type="xCountryCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<cedsId>000050</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000050</cedsURL>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="usCitizenshipStatus" type="gCitizenshipStatusType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>US Citizenship Status</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000299</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000299</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>An indicator of whether or not the person is a US citizen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xRaceTypeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Race Type</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>Indicates the racial origins of a person.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="AmericanIndianOrAlaskaNative">
+				<xs:annotation>
+					<xs:appinfo>
+						<cedsId>000016</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000016</cedsURL>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Asian">
+				<xs:annotation>
+					<xs:appinfo>
+						<cedsId>000020</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000020</cedsURL>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BlackOrAfricanAmerican">
+				<xs:annotation>
+					<xs:appinfo>
+						<cedsId>000034</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000034</cedsURL>`</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NativeHawaiianOrOtherPacificIslander">
+				<xs:annotation>
+					<xs:appinfo>
+						<cedsId>000192</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000192</cedsURL>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="White">
+				<xs:annotation>
+					<xs:appinfo>
+						<cedsId>000301</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000301</cedsURL>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DemographicRaceTwoOrMoreRaces">
+				<xs:annotation>
+					<xs:appinfo>
+						<cedsId>000973</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000973</cedsURL>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xRaceType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Race Type</elementName>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>Indicates the racial origins of a person.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="race" type="xRaceTypeType">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Race</elementName>
+						<sifChar>M</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>Indicates the racial origins of a person. The possible values are: AmericanIndianOrAlaskaNative, Asian, BlackOrAfricanAmerican, NativeHawaiianOrOtherPacificIslander, White, DemographicRaceTwoOrMoreRaces.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xRaceListType">
+		<xs:sequence>
+			<xs:element name="race" type="xRaceType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Race</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>Indicates the racial origins of a person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xMembershipTypeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Membership Type</elementName>
+				<cedsId/>
+				<cedsURL/>
+				<sifMapping target="SIF" version="2.7M">
+					<targetElement idType="XPath">StudentSchoolEnrollment/@MembershipType</targetElement>
+					<!-- this was mapped to SIF 2.7M because there do not appear to be standard codesets defined in SIF 3.2, nor is there an analog in CEDS -->
+				</sifMapping>
+			</xs:appinfo>
+			<xs:documentation>The student's type of membership in the system.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Home"/>
+			<xs:enumeration value="Concurrent"/>
+			<xs:enumeration value="Summer"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="xResponsibleSchoolTypeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Responsible School Type</elementName>
+				<cedsId>000595</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000595</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The type of services/instruction the school is responsible for providing to the student.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Accountability"/>
+			<xs:enumeration value="Attendance"/>
+			<xs:enumeration value="Funding"/>
+			<xs:enumeration value="Graduation"/>
+			<xs:enumeration value="IEP"/>
+			<xs:enumeration value="Transportation"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xEnrollmentType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Enrollment</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>Type of enrollment.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="leaRefId" type="gRefIdPointerType" minOccurs="1">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>LEA RefId</elementName>
+						<sifChar>M</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>RefId of the LEA</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="schoolRefId" type="gRefIdPointerType" minOccurs="1">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>School RefId</elementName>
+						<sifChar>M</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>RefId of the school.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="studentSchoolAssociationRefId" type="gRefIdPointerType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Student-School Association RefId</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>RefId of the SIF Student-School Association object.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="responsibleSchoolType" type="xResponsibleSchoolTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Responsible School</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000595</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000595</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The type of services/instruction the school is responsible for providing to the student.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="membershipType" type="xMembershipTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Membership Type</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>The student's type of membership in the system.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="entryDate" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Entry Date</elementName>
+						<sifChar>M</sifChar>
+						<cedsId>000097</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000097</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The month, day, and year on which a person enters and begins to receive instructional services in a school, institution, program, or class-section during a given session.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+      <xs:element name="exitDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <elementName>Exit Date</elementName>
+            <sifChar>O</sifChar>
+            <cedsId>000107</cedsId>
+            <cedsURL>https://ceds.ed.gov/element/000107</cedsURL>
+          </xs:appinfo>
+          <xs:documentation>The year, month and day on which the student officially withdrew or graduated, i.e. the date on which the student's enrollment ended.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="exitOrWithdrawalType" type="xs:token" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <elementName>Exit or Withdrawal Date</elementName>
+            <sifChar>O</sifChar>
+            <cedsId>000110</cedsId>
+            <cedsURL>https://ceds.ed.gov/element/000110</cedsURL>
+          </xs:appinfo>
+          <xs:documentation>
+            The circumstances under which the student exited from membership in an educational institution.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="homeRoomNumber" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Home Room Number</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+						<sifMapping target="SIF" version="3.2">
+							<targetElement idType="XPath">studentSchoolAssociation/homeRoomRefId</targetElement>
+							<!-- This is not a direct mapping since the intent is to communicate the local room identifiers, not RefIds for rooms -->
+						</sifMapping>
+					</xs:appinfo>
+					<xs:documentation>Home Room number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="homeRoomTeacher" type="xPersonReferenceType" minOccurs="0"/>
+			<xs:element name="gradeLevel" type="xGradeLevelType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Grade Level</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+						<sifMapping target="SIF" version="2.7M">
+							<targetElement idType="XPath">StudentPersonal/MostRecent/GradeLevel</targetElement>
+							<!-- CEDS appears to have entry and exit grade level, but not a current grade level -->
+						</sifMapping>
+					</xs:appinfo>
+					<xs:documentation>The current grade or academic level of the student within a school.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="projectedGraduationYear" type="xs:gYear" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Projected Graduation Year</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000226</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000226</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The year and month the student is projected to graduate.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="counselor" type="xPersonReferenceType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Counselor assigned to the student</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+						<sifMapping target="SIF" version="3.2">
+							<targetElement idType="XPath">studentSchoolAssociation/counselor</targetElement>
+						</sifMapping>
+					</xs:appinfo>
+					<xs:documentation>RefId of the counselor.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xEnrollmentListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Enrollment List</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of enrollments.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="enrollment" type="xEnrollmentType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Enrollment</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>Enrollment information for the student.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xAcademicSummaryType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Academic Summary</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>Academic information for the student.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cumulativeWeightedGpa" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Cumulative Weighted GPA</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000128</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000128</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A measure of average performance in all courses taken by a person during his or her school career as determined for record-keeping purposes. This is obtained by dividing the total grade points received by the total number of credits attempted. This usually includes grade points received and credits attempted in his or her current school as well as those transferred from schools in which the person was previously enrolled.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="termWeightedGpa" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Term Weighted GPA</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000129</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000129</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A measure of average performance in all courses taken by a person during a given session. This is obtained by dividing the total grade points received by the number of credits attempted for the same session.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="classRank" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Class Rank</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000041</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000041</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The academic rank of a student in relation to his or her high school graduating class (e.g., 1, 2, 3) based on high school GPA.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xContactType">
+		<xs:complexContent>
+			<xs:extension base="gSIF_CompositeType">
+				<xs:sequence>
+					<xs:element name="name" type="xPersonNameType">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Person Name</elementName>
+								<sifChar>M</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>Name of the contact.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="otherNames" type="xOtherPersonNameListType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Other Names</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>Other names of the contact.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="localId" type="xPersonIdType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Local Id</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>A unique number or alphanumeric code assigned to a staff member by a district or LEA.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="loginId" type="xLoginIdType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Login Id</elementName>
+								<sifChar>O</sifChar>
+								<cedsId>001170</cedsId>
+								<cedsURL>https://ceds.ed.gov/element/001170</cedsURL>
+							</xs:appinfo>
+							<xs:documentation>The login identifier for the person.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="otherIds" type="xOtherPersonIdListType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Other Ids</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>Other Ids of the contact.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="address" type="xPersonAddressType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Address</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>Address of the student.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="phoneNumber" type="xTelephoneType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Phone Number</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>Phone number of the contact.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="otherPhoneNumbers" type="xTelephoneListType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Other Phone Numbers</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>Other phone numbers for the contact.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="email" type="xEmailType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Email</elementName>
+								<sifChar>O</sifChar>
+								<cedsId>000088</cedsId>
+								<cedsURL>https://ceds.ed.gov/element/000088</cedsURL>
+							</xs:appinfo>
+							<xs:documentation>The numbers, letters, and symbols used to identify an electronic mail (e-mail) user within the network to which the person or organization belongs.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="otherEmails" type="xEmailListType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Other Emails</elementName>
+								<sifChar>O</sifChar>
+								<cedsId>000088</cedsId>
+								<cedsURL>https://ceds.ed.gov/element/000088</cedsURL>
+							</xs:appinfo>
+							<xs:documentation>Other emails of the contact.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="sex" type="xSexType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Sex</elementName>
+								<sifChar>O</sifChar>
+								<cedsId>000255</cedsId>
+								<cedsURL>https://ceds.ed.gov/element/000255</cedsURL>
+							</xs:appinfo>
+							<xs:documentation>The concept describing the biological traits that distinguish the males and females of a species.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="employerType" type="xEmployerType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Employer Type</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>A code that defines the employer type.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="relationships" type="xContactStudentRelationshipListType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Contact Relationship List</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>Relationships that this contact has with the student.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="xStudentContactListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Student Contact List</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>This data element is meant to be used in one of two ways.  1) Populate the contactPersonRefId field so that the xContact details can be retrieved from an xContact service endpoint.  This allows you to access related xContact data only as needed.  If you use this option, leave the "xContact" element unpopulated. 2) Populate the "xContact."  Use this option if you don't offer an xContact resource endpoint or if one is not appropriate in your use case (e.g. Student Record Exchange).  If this option is used, leave contactPersonRefId unpopulated.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="contactPersonRefId" type="gRefIdPointerType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Contact Person RefId</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>The RefId of the contact object.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="xContact" type="xContactType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Contact Person</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>A person associated with a student.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xLanguageCodeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Language Code</elementName>
+				<cedsId>000317</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000317</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The code for the specific language or dialect that a person uses to communicate.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="aar"/>
+			<xs:enumeration value="abk"/>
+			<xs:enumeration value="ace"/>
+			<xs:enumeration value="ach"/>
+			<xs:enumeration value="ada"/>
+			<xs:enumeration value="ady"/>
+			<xs:enumeration value="afa"/>
+			<xs:enumeration value="afh"/>
+			<xs:enumeration value="afr"/>
+			<xs:enumeration value="ain"/>
+			<xs:enumeration value="aka"/>
+			<xs:enumeration value="akk"/>
+			<xs:enumeration value="alb"/>
+			<xs:enumeration value="ale"/>
+			<xs:enumeration value="alg"/>
+			<xs:enumeration value="alt"/>
+			<xs:enumeration value="amh"/>
+			<xs:enumeration value="ang"/>
+			<xs:enumeration value="anp"/>
+			<xs:enumeration value="apa"/>
+			<xs:enumeration value="ara"/>
+			<xs:enumeration value="arc"/>
+			<xs:enumeration value="arg"/>
+			<xs:enumeration value="arm"/>
+			<xs:enumeration value="arn"/>
+			<xs:enumeration value="arp"/>
+			<xs:enumeration value="art"/>
+			<xs:enumeration value="arw"/>
+			<xs:enumeration value="asm"/>
+			<xs:enumeration value="ast"/>
+			<xs:enumeration value="ath"/>
+			<xs:enumeration value="aus"/>
+			<xs:enumeration value="ava"/>
+			<xs:enumeration value="ave"/>
+			<xs:enumeration value="awa"/>
+			<xs:enumeration value="aym"/>
+			<xs:enumeration value="aze"/>
+			<xs:enumeration value="bad"/>
+			<xs:enumeration value="bai"/>
+			<xs:enumeration value="bak"/>
+			<xs:enumeration value="bal"/>
+			<xs:enumeration value="bam"/>
+			<xs:enumeration value="ban"/>
+			<xs:enumeration value="baq"/>
+			<xs:enumeration value="bas"/>
+			<xs:enumeration value="bat"/>
+			<xs:enumeration value="bej"/>
+			<xs:enumeration value="bel"/>
+			<xs:enumeration value="bem"/>
+			<xs:enumeration value="ben"/>
+			<xs:enumeration value="ber"/>
+			<xs:enumeration value="bho"/>
+			<xs:enumeration value="bih"/>
+			<xs:enumeration value="bik"/>
+			<xs:enumeration value="bin"/>
+			<xs:enumeration value="bis"/>
+			<xs:enumeration value="bla"/>
+			<xs:enumeration value="bnt"/>
+			<xs:enumeration value="bos"/>
+			<xs:enumeration value="bra"/>
+			<xs:enumeration value="bre"/>
+			<xs:enumeration value="btk"/>
+			<xs:enumeration value="bua"/>
+			<xs:enumeration value="bug"/>
+			<xs:enumeration value="bul"/>
+			<xs:enumeration value="bur"/>
+			<xs:enumeration value="byn"/>
+			<xs:enumeration value="cad"/>
+			<xs:enumeration value="cai"/>
+			<xs:enumeration value="car"/>
+			<xs:enumeration value="cat"/>
+			<xs:enumeration value="cau"/>
+			<xs:enumeration value="ceb"/>
+			<xs:enumeration value="cel"/>
+			<xs:enumeration value="cha"/>
+			<xs:enumeration value="chb"/>
+			<xs:enumeration value="che"/>
+			<xs:enumeration value="chg"/>
+			<xs:enumeration value="chi"/>
+			<xs:enumeration value="chk"/>
+			<xs:enumeration value="chm"/>
+			<xs:enumeration value="chn"/>
+			<xs:enumeration value="cho"/>
+			<xs:enumeration value="chp"/>
+			<xs:enumeration value="chr"/>
+			<xs:enumeration value="chu"/>
+			<xs:enumeration value="chv"/>
+			<xs:enumeration value="chy"/>
+			<xs:enumeration value="cmc"/>
+			<xs:enumeration value="cop"/>
+			<xs:enumeration value="cor"/>
+			<xs:enumeration value="cos"/>
+			<xs:enumeration value="cpe"/>
+			<xs:enumeration value="cpf"/>
+			<xs:enumeration value="cpp"/>
+			<xs:enumeration value="cre"/>
+			<xs:enumeration value="crh"/>
+			<xs:enumeration value="crp"/>
+			<xs:enumeration value="csb"/>
+			<xs:enumeration value="cus"/>
+			<xs:enumeration value="cze"/>
+			<xs:enumeration value="dak"/>
+			<xs:enumeration value="dan"/>
+			<xs:enumeration value="dar"/>
+			<xs:enumeration value="day"/>
+			<xs:enumeration value="del"/>
+			<xs:enumeration value="den"/>
+			<xs:enumeration value="dgr"/>
+			<xs:enumeration value="din"/>
+			<xs:enumeration value="div"/>
+			<xs:enumeration value="doi"/>
+			<xs:enumeration value="dra"/>
+			<xs:enumeration value="dsb"/>
+			<xs:enumeration value="dua"/>
+			<xs:enumeration value="dum"/>
+			<xs:enumeration value="dut"/>
+			<xs:enumeration value="dyu"/>
+			<xs:enumeration value="dzo"/>
+			<xs:enumeration value="efi"/>
+			<xs:enumeration value="egy"/>
+			<xs:enumeration value="eka"/>
+			<xs:enumeration value="elx"/>
+			<xs:enumeration value="eng"/>
+			<xs:enumeration value="enm"/>
+			<xs:enumeration value="epo"/>
+			<xs:enumeration value="est"/>
+			<xs:enumeration value="ewe"/>
+			<xs:enumeration value="ewo"/>
+			<xs:enumeration value="fan"/>
+			<xs:enumeration value="fao"/>
+			<xs:enumeration value="fat"/>
+			<xs:enumeration value="fij"/>
+			<xs:enumeration value="fil"/>
+			<xs:enumeration value="fin"/>
+			<xs:enumeration value="fiu"/>
+			<xs:enumeration value="fon"/>
+			<xs:enumeration value="fre"/>
+			<xs:enumeration value="frm"/>
+			<xs:enumeration value="fro"/>
+			<xs:enumeration value="frr"/>
+			<xs:enumeration value="frs"/>
+			<xs:enumeration value="fry"/>
+			<xs:enumeration value="ful"/>
+			<xs:enumeration value="fur"/>
+			<xs:enumeration value="gaa"/>
+			<xs:enumeration value="gay"/>
+			<xs:enumeration value="gba"/>
+			<xs:enumeration value="gem"/>
+			<xs:enumeration value="geo"/>
+			<xs:enumeration value="ger"/>
+			<xs:enumeration value="gez"/>
+			<xs:enumeration value="gil"/>
+			<xs:enumeration value="gla"/>
+			<xs:enumeration value="gle"/>
+			<xs:enumeration value="glg"/>
+			<xs:enumeration value="glv"/>
+			<xs:enumeration value="gmh"/>
+			<xs:enumeration value="goh"/>
+			<xs:enumeration value="gon"/>
+			<xs:enumeration value="gor"/>
+			<xs:enumeration value="got"/>
+			<xs:enumeration value="grb"/>
+			<xs:enumeration value="grc"/>
+			<xs:enumeration value="gre"/>
+			<xs:enumeration value="grn"/>
+			<xs:enumeration value="gsw"/>
+			<xs:enumeration value="guj"/>
+			<xs:enumeration value="gwi"/>
+			<xs:enumeration value="hai"/>
+			<xs:enumeration value="hat"/>
+			<xs:enumeration value="hau"/>
+			<xs:enumeration value="haw"/>
+			<xs:enumeration value="heb"/>
+			<xs:enumeration value="her"/>
+			<xs:enumeration value="hil"/>
+			<xs:enumeration value="him"/>
+			<xs:enumeration value="hin"/>
+			<xs:enumeration value="hit"/>
+			<xs:enumeration value="hmn"/>
+			<xs:enumeration value="hmo"/>
+			<xs:enumeration value="hrv"/>
+			<xs:enumeration value="hsb"/>
+			<xs:enumeration value="hun"/>
+			<xs:enumeration value="hup"/>
+			<xs:enumeration value="iba"/>
+			<xs:enumeration value="ibo"/>
+			<xs:enumeration value="ice"/>
+			<xs:enumeration value="ido"/>
+			<xs:enumeration value="iii"/>
+			<xs:enumeration value="ijo"/>
+			<xs:enumeration value="iku"/>
+			<xs:enumeration value="ile"/>
+			<xs:enumeration value="ilo"/>
+			<xs:enumeration value="ina"/>
+			<xs:enumeration value="inc"/>
+			<xs:enumeration value="ind"/>
+			<xs:enumeration value="ine"/>
+			<xs:enumeration value="inh"/>
+			<xs:enumeration value="ipk"/>
+			<xs:enumeration value="ira"/>
+			<xs:enumeration value="iro"/>
+			<xs:enumeration value="ita"/>
+			<xs:enumeration value="jav"/>
+			<xs:enumeration value="jbo"/>
+			<xs:enumeration value="jpn"/>
+			<xs:enumeration value="jpr"/>
+			<xs:enumeration value="jrb"/>
+			<xs:enumeration value="kaa"/>
+			<xs:enumeration value="kab"/>
+			<xs:enumeration value="kac"/>
+			<xs:enumeration value="kal"/>
+			<xs:enumeration value="kam"/>
+			<xs:enumeration value="kan"/>
+			<xs:enumeration value="kar"/>
+			<xs:enumeration value="kas"/>
+			<xs:enumeration value="kau"/>
+			<xs:enumeration value="kaw"/>
+			<xs:enumeration value="kaz"/>
+			<xs:enumeration value="kbd"/>
+			<xs:enumeration value="kha"/>
+			<xs:enumeration value="khi"/>
+			<xs:enumeration value="khm"/>
+			<xs:enumeration value="kho"/>
+			<xs:enumeration value="kik"/>
+			<xs:enumeration value="kin"/>
+			<xs:enumeration value="kir"/>
+			<xs:enumeration value="kmb"/>
+			<xs:enumeration value="kok"/>
+			<xs:enumeration value="kom"/>
+			<xs:enumeration value="kon"/>
+			<xs:enumeration value="kor"/>
+			<xs:enumeration value="kos"/>
+			<xs:enumeration value="kpe"/>
+			<xs:enumeration value="krc"/>
+			<xs:enumeration value="krl"/>
+			<xs:enumeration value="kro"/>
+			<xs:enumeration value="kru"/>
+			<xs:enumeration value="kua"/>
+			<xs:enumeration value="kum"/>
+			<xs:enumeration value="kur"/>
+			<xs:enumeration value="kut"/>
+			<xs:enumeration value="lad"/>
+			<xs:enumeration value="lah"/>
+			<xs:enumeration value="lam"/>
+			<xs:enumeration value="lao"/>
+			<xs:enumeration value="lat"/>
+			<xs:enumeration value="lav"/>
+			<xs:enumeration value="lez"/>
+			<xs:enumeration value="lim"/>
+			<xs:enumeration value="lin"/>
+			<xs:enumeration value="lit"/>
+			<xs:enumeration value="lol"/>
+			<xs:enumeration value="loz"/>
+			<xs:enumeration value="ltz"/>
+			<xs:enumeration value="lua"/>
+			<xs:enumeration value="lub"/>
+			<xs:enumeration value="lug"/>
+			<xs:enumeration value="lui"/>
+			<xs:enumeration value="lun"/>
+			<xs:enumeration value="luo"/>
+			<xs:enumeration value="lus"/>
+			<xs:enumeration value="mac"/>
+			<xs:enumeration value="mad"/>
+			<xs:enumeration value="mag"/>
+			<xs:enumeration value="mah"/>
+			<xs:enumeration value="mai"/>
+			<xs:enumeration value="mak"/>
+			<xs:enumeration value="mal"/>
+			<xs:enumeration value="man"/>
+			<xs:enumeration value="mao"/>
+			<xs:enumeration value="map"/>
+			<xs:enumeration value="mar"/>
+			<xs:enumeration value="mas"/>
+			<xs:enumeration value="may"/>
+			<xs:enumeration value="mdf"/>
+			<xs:enumeration value="mdr"/>
+			<xs:enumeration value="men"/>
+			<xs:enumeration value="mga"/>
+			<xs:enumeration value="mic"/>
+			<xs:enumeration value="min"/>
+			<xs:enumeration value="mis"/>
+			<xs:enumeration value="mkh"/>
+			<xs:enumeration value="mlg"/>
+			<xs:enumeration value="mlt"/>
+			<xs:enumeration value="mnc"/>
+			<xs:enumeration value="mni"/>
+			<xs:enumeration value="mno"/>
+			<xs:enumeration value="moh"/>
+			<xs:enumeration value="mon"/>
+			<xs:enumeration value="mos"/>
+			<xs:enumeration value="mul"/>
+			<xs:enumeration value="mun"/>
+			<xs:enumeration value="mus"/>
+			<xs:enumeration value="mwl"/>
+			<xs:enumeration value="mwr"/>
+			<xs:enumeration value="myn"/>
+			<xs:enumeration value="myv"/>
+			<xs:enumeration value="nah"/>
+			<xs:enumeration value="nai"/>
+			<xs:enumeration value="nap"/>
+			<xs:enumeration value="nau"/>
+			<xs:enumeration value="nav"/>
+			<xs:enumeration value="nbl"/>
+			<xs:enumeration value="nde"/>
+			<xs:enumeration value="ndo"/>
+			<xs:enumeration value="nds"/>
+			<xs:enumeration value="nep"/>
+			<xs:enumeration value="new"/>
+			<xs:enumeration value="nia"/>
+			<xs:enumeration value="nic"/>
+			<xs:enumeration value="niu"/>
+			<xs:enumeration value="nno"/>
+			<xs:enumeration value="nob"/>
+			<xs:enumeration value="nog"/>
+			<xs:enumeration value="non"/>
+			<xs:enumeration value="nor"/>
+			<xs:enumeration value="nqo"/>
+			<xs:enumeration value="nso"/>
+			<xs:enumeration value="nub"/>
+			<xs:enumeration value="nwc"/>
+			<xs:enumeration value="nya"/>
+			<xs:enumeration value="nym"/>
+			<xs:enumeration value="nyn"/>
+			<xs:enumeration value="nyo"/>
+			<xs:enumeration value="nzi"/>
+			<xs:enumeration value="oci"/>
+			<xs:enumeration value="oji"/>
+			<xs:enumeration value="ori"/>
+			<xs:enumeration value="orm"/>
+			<xs:enumeration value="osa"/>
+			<xs:enumeration value="oss"/>
+			<xs:enumeration value="ota"/>
+			<xs:enumeration value="oto"/>
+			<xs:enumeration value="paa"/>
+			<xs:enumeration value="pag"/>
+			<xs:enumeration value="pal"/>
+			<xs:enumeration value="pam"/>
+			<xs:enumeration value="pan"/>
+			<xs:enumeration value="pap"/>
+			<xs:enumeration value="pau"/>
+			<xs:enumeration value="peo"/>
+			<xs:enumeration value="per"/>
+			<xs:enumeration value="phi"/>
+			<xs:enumeration value="phn"/>
+			<xs:enumeration value="pli"/>
+			<xs:enumeration value="pol"/>
+			<xs:enumeration value="pon"/>
+			<xs:enumeration value="por"/>
+			<xs:enumeration value="pra"/>
+			<xs:enumeration value="pro"/>
+			<xs:enumeration value="pus"/>
+			<xs:enumeration value="que"/>
+			<xs:enumeration value="raj"/>
+			<xs:enumeration value="rap"/>
+			<xs:enumeration value="rar"/>
+			<xs:enumeration value="roa"/>
+			<xs:enumeration value="roh"/>
+			<xs:enumeration value="rom"/>
+			<xs:enumeration value="rum"/>
+			<xs:enumeration value="run"/>
+			<xs:enumeration value="rup"/>
+			<xs:enumeration value="rus"/>
+			<xs:enumeration value="sad"/>
+			<xs:enumeration value="sag"/>
+			<xs:enumeration value="sah"/>
+			<xs:enumeration value="sai"/>
+			<xs:enumeration value="sal"/>
+			<xs:enumeration value="sam"/>
+			<xs:enumeration value="san"/>
+			<xs:enumeration value="sas"/>
+			<xs:enumeration value="sat"/>
+			<xs:enumeration value="scn"/>
+			<xs:enumeration value="sco"/>
+			<xs:enumeration value="sel"/>
+			<xs:enumeration value="sem"/>
+			<xs:enumeration value="sga"/>
+			<xs:enumeration value="sgn"/>
+			<xs:enumeration value="shn"/>
+			<xs:enumeration value="sid"/>
+			<xs:enumeration value="sin"/>
+			<xs:enumeration value="sio"/>
+			<xs:enumeration value="sit"/>
+			<xs:enumeration value="sla"/>
+			<xs:enumeration value="slo"/>
+			<xs:enumeration value="slv"/>
+			<xs:enumeration value="sma"/>
+			<xs:enumeration value="sme"/>
+			<xs:enumeration value="smi"/>
+			<xs:enumeration value="smj"/>
+			<xs:enumeration value="smn"/>
+			<xs:enumeration value="smo"/>
+			<xs:enumeration value="sms"/>
+			<xs:enumeration value="sna"/>
+			<xs:enumeration value="snd"/>
+			<xs:enumeration value="snk"/>
+			<xs:enumeration value="sog"/>
+			<xs:enumeration value="som"/>
+			<xs:enumeration value="son"/>
+			<xs:enumeration value="sot"/>
+			<xs:enumeration value="spa"/>
+			<xs:enumeration value="srd"/>
+			<xs:enumeration value="srn"/>
+			<xs:enumeration value="srp"/>
+			<xs:enumeration value="srr"/>
+			<xs:enumeration value="ssa"/>
+			<xs:enumeration value="ssw"/>
+			<xs:enumeration value="suk"/>
+			<xs:enumeration value="sun"/>
+			<xs:enumeration value="sus"/>
+			<xs:enumeration value="sux"/>
+			<xs:enumeration value="swa"/>
+			<xs:enumeration value="swe"/>
+			<xs:enumeration value="syc"/>
+			<xs:enumeration value="syr"/>
+			<xs:enumeration value="tah"/>
+			<xs:enumeration value="tai"/>
+			<xs:enumeration value="tam"/>
+			<xs:enumeration value="tat"/>
+			<xs:enumeration value="tel"/>
+			<xs:enumeration value="tem"/>
+			<xs:enumeration value="ter"/>
+			<xs:enumeration value="tet"/>
+			<xs:enumeration value="tgk"/>
+			<xs:enumeration value="tgl"/>
+			<xs:enumeration value="tha"/>
+			<xs:enumeration value="tib"/>
+			<xs:enumeration value="tig"/>
+			<xs:enumeration value="tir"/>
+			<xs:enumeration value="tiv"/>
+			<xs:enumeration value="tkl"/>
+			<xs:enumeration value="tlh"/>
+			<xs:enumeration value="tli"/>
+			<xs:enumeration value="tmh"/>
+			<xs:enumeration value="tog"/>
+			<xs:enumeration value="ton"/>
+			<xs:enumeration value="tpi"/>
+			<xs:enumeration value="tsi"/>
+			<xs:enumeration value="tsn"/>
+			<xs:enumeration value="tso"/>
+			<xs:enumeration value="tuk"/>
+			<xs:enumeration value="tum"/>
+			<xs:enumeration value="tup"/>
+			<xs:enumeration value="tur"/>
+			<xs:enumeration value="tut"/>
+			<xs:enumeration value="tvl"/>
+			<xs:enumeration value="twi"/>
+			<xs:enumeration value="tyv"/>
+			<xs:enumeration value="udm"/>
+			<xs:enumeration value="uga"/>
+			<xs:enumeration value="uig"/>
+			<xs:enumeration value="ukr"/>
+			<xs:enumeration value="umb"/>
+			<xs:enumeration value="und"/>
+			<xs:enumeration value="urd"/>
+			<xs:enumeration value="uzb"/>
+			<xs:enumeration value="vai"/>
+			<xs:enumeration value="ven"/>
+			<xs:enumeration value="vie"/>
+			<xs:enumeration value="vol"/>
+			<xs:enumeration value="vot"/>
+			<xs:enumeration value="wak"/>
+			<xs:enumeration value="wal"/>
+			<xs:enumeration value="war"/>
+			<xs:enumeration value="was"/>
+			<xs:enumeration value="wel"/>
+			<xs:enumeration value="wen"/>
+			<xs:enumeration value="wln"/>
+			<xs:enumeration value="wol"/>
+			<xs:enumeration value="xal"/>
+			<xs:enumeration value="xho"/>
+			<xs:enumeration value="yao"/>
+			<xs:enumeration value="yap"/>
+			<xs:enumeration value="yid"/>
+			<xs:enumeration value="yor"/>
+			<xs:enumeration value="ypk"/>
+			<xs:enumeration value="zap"/>
+			<xs:enumeration value="zbl"/>
+			<xs:enumeration value="zen"/>
+			<xs:enumeration value="zha"/>
+			<xs:enumeration value="znd"/>
+			<xs:enumeration value="zul"/>
+			<xs:enumeration value="zun"/>
+			<xs:enumeration value="zxx"/>
+			<xs:enumeration value="zza"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="xLanguageTypeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Language Type</elementName>
+				<cedsId>000316</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000316</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>An indication of the function and context in which a person uses a language to communicate.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Correspondence"/>
+			<xs:enumeration value="Dominant"/>
+			<xs:enumeration value="Home"/>
+			<xs:enumeration value="Native"/>
+			<xs:enumeration value="OtherLanguageProficiency"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xLanguageType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Language</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="type" type="xLanguageTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Language Type</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000316</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000316</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>An indication of the function and context in which a person uses a language to communicate.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="code" type="xLanguageCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Language Code</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000317</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000317</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The code for the specific language or dialect that a person uses to communicate.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xLanguageListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Language List</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of languages.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="language" type="xLanguageType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Language</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000317</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000317</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The specific language or dialect that a person uses to communicate.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xStaffPersonAssignmentType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Staff Person Assignment</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="leaRefId" type="gRefIdPointerType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>LEA RefId</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>The RefId for the LEA Object.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="schoolRefId" type="gRefIdPointerType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>School RefId</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>The RefId of the school object.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jobFunction" type="xEducationStaffClassificationType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Job Function</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000087</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000087</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The titles of employment, official status, or rank of education staff.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xStaffPersonAssignmentListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Staff Person Assignment List</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of staff person assignments.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="staffPersonAssignment" type="xStaffPersonAssignmentType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Staff Person Assignment</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>The location and function to which a staff person is assigned.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xEducationStaffClassificationType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Education Staff Classification Type</elementName>
+				<cedsId>000087</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000087</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The titles of employment, official status, or rank of education staff.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Administrative Support Staff"/>
+			<xs:enumeration value="Administrators"/>
+			<xs:enumeration value="All Other Support Staff"/>
+			<xs:enumeration value="Behavioral Specialists"/>
+			<xs:enumeration value="Early Learning Assistant Teachers"/>
+			<xs:enumeration value="Early Learning Teachers"/>
+			<xs:enumeration value="Elementary Teachers"/>
+			<xs:enumeration value="Family Service Workers"/>
+			<xs:enumeration value="Health Specialists"/>
+			<xs:enumeration value="Home Visitors"/>
+			<xs:enumeration value="Instructional Coordinators"/>
+			<xs:enumeration value="Kindergarten Teachers"/>
+			<xs:enumeration value="Librarians/Media Specialists"/>
+			<xs:enumeration value="Library/Media Support Staff"/>
+			<xs:enumeration value="Mental Health Specialists"/>
+			<xs:enumeration value="Nutrition Specialists"/>
+			<xs:enumeration value="Paraprofessionals"/>
+			<xs:enumeration value="Part C Early Interventionists"/>
+			<xs:enumeration value="Part C Service Coordinators"/>
+			<xs:enumeration value="School Counselors"/>
+			<xs:enumeration value="Secondary Teachers"/>
+			<xs:enumeration value="Social Workers"/>
+			<xs:enumeration value="Special Education Teachers"/>
+			<xs:enumeration value="Special Needs Specialists"/>
+			<xs:enumeration value="Student Support Services Staff"/>
+			<xs:enumeration value="Ungraded Teachers"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="xEmployerType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Employer</elementName>
+				<cedsId/>
+				<cedsURL/>
+				<sifMapping target="SIF" version="2.7M">
+					<targetElement idType="XPath">StudentContact/EmployerType</targetElement>
+					<!-- Added from SIF2.7/NCES 0614; combined the NCES codeset with the new style of CEDS descriptive codes -->
+				</sifMapping>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Government_1803"/>
+			<xs:enumeration value="Military_1804"/>
+			<xs:enumeration value="PrivateOrganization_1805"/>
+			<xs:enumeration value="Self-employed_1806"/>
+			<xs:enumeration value="MilitaryDepartmentOfDefense_1807"/>
+			<xs:enumeration value="AgriculturalFisherySeasonal_1808"/>
+			<xs:enumeration value="Other_9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xContactStudentRelationshipType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Contact-Student Relationship</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>The relationship between the contact and the student.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="studentRefId" type="gRefIdPointerType">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Student RefId</elementName>
+						<sifChar>M</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="relationshipCode" type="xPersonRelationshipToLearnerType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Relationship Code</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="restrictions" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Restrictions</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001424</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/0001424</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>Restrictions for student and/or teacher contact with the individual (e.g., the student may not be picked up by the individual.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="livesWith" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Lives With</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001425</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001425</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>Indicates whether or not the learner lives with the related person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="primaryContactIndicator" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Primary Contact Indicator</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001428</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001428</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>Indicates that a person is a primary contact within the specified context, such as a primary parental contact specified in Person Relationship to Learner or a primary administrative contact for an organization.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="emergencyContactIndicator" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Emergency Contact Indicator</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001341</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001341</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>Indicates whether or not the person is a designated emergency contact for the learner.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="financialResponsibilityIndicator" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Financial Responsibility Indicator</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+						<sifMapping target="SIF" version="3.2">
+							<targetElement idType="XPath">contactPersonAssociation/contactFlagList/contactFlag</targetElement>
+						</sifMapping>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="custodialIndicator" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Custodial Indicator</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+						<sifMapping target="SIF" version="3.2">
+							<targetElement idType="XPath">contactPersonAssociation/contactFlagList/contactFlag</targetElement>
+						</sifMapping>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="communicationsIndicator" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Communications Indicator</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+						<sifMapping target="SIF" version="3.2">
+							<targetElement idType="XPath">contactPersonAssociation/contactFlagList/contactFlag</targetElement>
+						</sifMapping>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="contactSequence" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Contact Sequence</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001423</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001423</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The numeric order in the preferred sequence and priority for contacting a person related to the learner.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xContactStudentRelationshipListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Contact-Student Relationship List</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="relationship" type="xContactStudentRelationshipType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Relationship</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xPersonRelationshipToLearnerType">
+		<xs:annotation>
+			<xs:appinfo>
+				<cedsId>000425</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000425</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The nature of the person's relationship to a learner. The learner may be an Early Learning Child, K12 Student, Postsecondary Student, or an adult learner in a workforce education program.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Aunt"/>
+			<xs:enumeration value="Brother"/>
+			<xs:enumeration value="BrotherInLaw"/>
+			<xs:enumeration value="CourtAppointedGuardian"/>
+			<xs:enumeration value="Daughter"/>
+			<xs:enumeration value="DaughterInLaw"/>
+			<xs:enumeration value="Employer"/>
+			<xs:enumeration value="Father"/>
+			<xs:enumeration value="FathersSignificantOther"/>
+			<xs:enumeration value="FathersCivilPartner"/>
+			<xs:enumeration value="FatherInLaw"/>
+			<xs:enumeration value="Fiance"/>
+			<xs:enumeration value="Fiancee"/>
+			<xs:enumeration value="Friend"/>
+			<xs:enumeration value="Grandfather"/>
+			<xs:enumeration value="Grandmother"/>
+			<xs:enumeration value="Husband"/>
+			<xs:enumeration value="MothersSignificantOther"/>
+			<xs:enumeration value="Mother"/>
+			<xs:enumeration value="MothersCivilPartner"/>
+			<xs:enumeration value="Nephew"/>
+			<xs:enumeration value="Niece"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="SignificantOther"/>
+			<xs:enumeration value="Sister"/>
+			<xs:enumeration value="Son"/>
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Uncle"/>
+			<xs:enumeration value="Ward"/>
+			<xs:enumeration value="Wife"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="xGradeLevelType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Grade Level</elementName>
+				<cedsId>001301</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/001301</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The education level, grade level or primary instructional level at which a course is intended. Usage Notes: This element is repeatable for most use cases. Examples: (1.) SCED identifiers may specify a grade span of two or more grades. (2) A postsecondary course designed to qualify a student for an associates degree and professional certification could be repeated with both of those options.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="IT"/>
+			<xs:enumeration value="PR"/>
+			<xs:enumeration value="PK"/>
+			<xs:enumeration value="TK"/>
+			<xs:enumeration value="KG"/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+			<xs:enumeration value="08"/>
+			<xs:enumeration value="09"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="11"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="13"/>
+			<xs:enumeration value="PS"/>
+			<xs:enumeration value="UG"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xApplicableEducationLevelListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Applicable Education Level List</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of applicable education levels.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="applicableEducationLevel" type="xGradeLevelType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Applicable Education Level</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001301</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001301</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The education level, grade level or primary instructional level at which a course is intended.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xSessionTypeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Session Type</elementName>
+				<cedsId>000254</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000254</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>A prescribed span of time when an education institution is open, instruction is provided, and students are under the direction and guidance of teachers and/or education institution administration. A session may be interrupted by one or more vacations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="FullSchoolYear"/>
+			<xs:enumeration value="Intersession"/>
+			<xs:enumeration value="LongSession"/>
+			<xs:enumeration value="MiniTerm"/>
+			<xs:enumeration value="Quarter"/>
+			<xs:enumeration value="Quinmester"/>
+			<xs:enumeration value="Semester"/>
+			<xs:enumeration value="SummerTerm"/>
+			<xs:enumeration value="Trimester"/>
+			<xs:enumeration value="TwelveMonth"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xSessionType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Session</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="sessionType" type="xSessionTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Session Type</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000254</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000254</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A prescribed span of time when an education institution is open, instruction is provided, and students are under the direction and guidance of teachers and/or education institution administration. A session may be interrupted by one or more vacations.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sessionCode" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Session Code</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001270</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001270</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A local code given to the session, usually for a session that represents a term within the school year such as a marking term.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="description" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Session Description</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001271</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001271</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A short description of the Session.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="markingTerm" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Marking Term</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001272</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001272</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>Indicates that the session is a marking term.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="schedulingTerm" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Scheduling Term</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001273</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001273</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>Indicates that the session is a scheduling term.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="linkedSessionCode" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Linked Session Code</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>Enables sessions to be linked (e.g. link a marking term to a scheduling term)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="startDate" type="xs:date">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Start Date</elementName>
+						<sifChar>M</sifChar>
+						<cedsId>000251</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000251</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The year, month and day on which a session begins.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>End Date</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000253</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000253</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The year, month and day on which a session ends.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xSessionListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Session List</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of sessions.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="sessionList" type="xSessionType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Session List</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xDayOfWeekType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Days of the Week</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A day of the week. (See enumeration for exact values.)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Sunday"/>
+			<xs:enumeration value="Monday"/>
+			<xs:enumeration value="Tuesday"/>
+			<xs:enumeration value="Wednesday"/>
+			<xs:enumeration value="Thursday"/>
+			<xs:enumeration value="Friday"/>
+			<xs:enumeration value="Saturday"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xDayListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Day List</elementName>
+				<sifChar/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of days.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="bellScheduleDay" type="xDayOfWeekType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Bell Schedule Day</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xPersonReferenceType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Person Reference</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A collection of information that identifies a unique person.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="refId" type="gRefIdPointerType">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>RefId</elementName>
+						<sifChar>M</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>A SIF RefId.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="localId" type="xPersonIdType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Local Id</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL>https://ceds.ed.gov/element/</cedsURL>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="givenName" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Given Name</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000115</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000115</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The full legal first name given to a person at birth, baptism, or through legal change.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="familyName" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Family Name</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000172</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000172</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The full legal last name borne in common by members of a family.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xStudentReferenceListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Student Reference List</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of student references.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="studentReference" type="xPersonReferenceType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Student Reference</elementName>
+						<sifChar>M</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>A collection of person information that identifies an unique student.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xStaffReferenceType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Staff Reference</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A collection of information about a staff person.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="staffPersonReference" type="xPersonReferenceType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Staff Person Reference</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>A collection of information about a staff person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="teacherOfRecord" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Teacher of Record</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000647</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000647</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>Staff member who has a Teacher of Record responsibility for a Class Section based upon the state's definition of Teacher of Record.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="percentResponsible" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Percent Responsible</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000649</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000649</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A percentage used to weight the educator's assigned responsibility for student learning in a Class Section, particularly when more than one educator is assigned to the class section.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xStaffReferenceListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Staff Reference List</elementName>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of staff references.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="otherStaff" type="xStaffReferenceType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Other Staff</elementName>
+						<sifChar/>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xPersonNameTypeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Person Name Type</elementName>
+				<sifChar/>
+				<cedsId>000634</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000634</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The types of previous, alternate or other names for a person.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Alias"/>
+			<xs:enumeration value="Nickname"/>
+			<xs:enumeration value="OtherName"/>
+			<xs:enumeration value="PreviousLegalName"/>
+			<xs:enumeration value="PreferredFamilyName"/>
+			<xs:enumeration value="PreferredGivenName"/>
+			<xs:enumeration value="FullName"/>
+			<xs:enumeration value="LegalName"/>
+			<!-- the following enumeration has been added to generalize the name type structure to support passing the primary name as legal name -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xPersonNameType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Person Name</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A name of the person.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="type" type="xPersonNameTypeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Person Name Type</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000634</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000634</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The types of previous, alternate or other names for a person. Generally the "LegalName" for the primary name.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="prefix" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Prefix</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000212</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000212</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>An appellation, if any, used to denote rank, placement, or status (e.g., Mr., Ms., Reverend, Sister, Dr., Colonel).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="familyName" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Family Name</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000172</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000172</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The full legal last name borne in common by members of a family.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="givenName" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Given Name</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000115</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000115</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The full legal first name given to a person at birth, baptism, or through legal change.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="middleName" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Middle Name</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000184</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000184</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A full legal middle name given to a person at birth, baptism, or through legal change.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="suffix" type="xs:normalizedString" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Suffix</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000121</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000121</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>An appendage, if any, used to denote a person's generation in his family (e.g., Jr., Sr., III).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xOtherPersonNameListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Other Person Name List</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A List of other names for the person.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xPersonNameType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Person Name</elementName>
+						<sifChar/>
+						<cedsId>000634</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000634</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The types of previous, alternate or other names for a person. Generally the "LegalName" for the primary name.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xPersonIdType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Person Id</elementName>
+				<sifChar/>
+				<cedsId>001572</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/001572</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>A unique number or alphanumeric code assigned to a person by a school, school system, a state, or other agency or entity.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:simpleType name="xPersonIdSystemType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Person Id System</elementName>
+				<sifChar/>
+				<cedsId>001571</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/001571</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>A coding scheme that is used for identification of a person.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Alias"/>
+			<xs:enumeration value="SSN"/>
+			<xs:enumeration value="USVisa"/>
+			<xs:enumeration value="PIN"/>
+			<xs:enumeration value="Federal"/>
+			<xs:enumeration value="DriversLicense"/>
+			<xs:enumeration value="Medicaid"/>
+			<xs:enumeration value="Healthcare"/>
+			<xs:enumeration value="ProfessionalCertificate"/>
+			<xs:enumeration value="School"/>
+			<xs:enumeration value="District"/>
+			<xs:enumeration value="State"/>
+			<xs:enumeration value="Institution"/>
+			<xs:enumeration value="OtherFederal"/>
+			<xs:enumeration value="SelectiveService"/>
+			<xs:enumeration value="CanadianSIN"/>
+			<xs:enumeration value="Other"/>
+			<!-- additional enumerations may be desirable for application identifiers -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xOtherPersonIdType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Other Person Id</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="type" type="xPersonIdSystemType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Person Id Type</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>001075</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001075</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a student.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="id" type="xPersonIdType">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Person Id</elementName>
+						<sifChar>M</sifChar>
+						<cedsId>001071</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/001071</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A unique number or alphanumeric code assigned to a student by a school, school system, a state, or other agency or entity.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xOtherPersonIdListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Other Person Id List</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of other Ids for the person.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="otherId" type="xOtherPersonIdType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName/>
+						<sifChar/>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>An other Id for the person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xCourseIdType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Course Id</elementName>
+				<sifChar/>
+				<cedsId>000055</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000055</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The actual code that identifies the organization of subject matter and related learning experiences provided for the instruction of students.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:simpleType name="xCourseCodeSystemType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Course Code System</elementName>
+				<sifChar/>
+				<cedsId>000056</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000056</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>A system that is used to identify the organization of subject matter and related learning experiences provided for the instruction of students.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Intermediate"/>
+			<xs:enumeration value="LEA"/>
+			<xs:enumeration value="NCES"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="SCED"/>
+			<xs:enumeration value="School"/>
+			<xs:enumeration value="State"/>
+			<xs:enumeration value="University"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="xOtherCourseIdType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Other Course Id</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>An other Id for the Course.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="type" type="xCourseCodeSystemType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Course Code System</elementName>
+						<sifChar/>
+						<cedsId>000056</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000056</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A system that is used to identify the organization of subject matter and related learning experiences provided for the instruction of students.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="id" type="xCourseIdType">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Course Id</elementName>
+						<sifChar/>
+						<cedsId>000055</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000055</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The actual code that identifies the organization of subject matter and related learning experiences provided for the instruction of students.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xOtherCourseIdListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Other Course Id List</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="otherId" type="xOtherCourseIdType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Other Course Id</elementName>
+						<sifChar/>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xYearGroupListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Year Group List</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="gradeLevel" type="xGradeLevelType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Grade Level</elementName>
+						<sifChar/>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xOtherOrganizationIdType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Other Organization Id</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="type" type="xOrganizationIdentificationSystemType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Organization Identification System</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000827</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000827</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to an organization.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="id" type="xs:token">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Organization Id</elementName>
+						<sifChar>M</sifChar>
+						<cedsId>000826</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000826</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A unique number or alphanumeric code assigned to an organization by a school, school system, a state, or other agency or entity.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xOtherOrganizationIdListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Other Organization Id List</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A list of other organization Ids.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="otherId" type="xOtherOrganizationIdType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Other Organization Id</elementName>
+						<sifChar>OR</sifChar>
+						<cedsId>000826</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000826</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A unique number or alphanumeric code assigned to an organization by a school, school system, a state, or other agency or entity.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xOrganizationIdType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Organization Id</elementName>
+				<sifChar>M</sifChar>
+				<cedsId>000826</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000826</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>A unique number or alphanumeric code assigned to an organization by a school, school system, a state, or other agency or entity.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:simpleType name="xOrganizationIdentificationSystemType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Organization Identification System</elementName>
+				<sifChar>O</sifChar>
+				<cedsId>000827</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000827</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to an organization.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="School"/>
+			<xs:enumeration value="ACT"/>
+			<xs:enumeration value="LEA"/>
+			<xs:enumeration value="SEA"/>
+			<xs:enumeration value="NCES"/>
+			<xs:enumeration value="Federal"/>
+			<xs:enumeration value="DUNS"/>
+			<xs:enumeration value="OtherFederal"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="SSN"/>
+			<xs:enumeration value="Vendor"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="xSubjectType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Subject Type</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+				<sifMapping target="SIF" version="3.2">
+					<targetElement idType="XPath">course/subjectAreaList/subjectArea/code/otherCodeList/otherCode</targetElement>
+					<!-- CEDS does not have an informal concept for identifying a course subject; it uses SCED which is more rigorous than what is desired here -->
+				</sifMapping>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+	<xs:simpleType name="xSchoolYearType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>School Year</elementName>
+				<sifChar/>
+				<cedsId>000243</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/000243</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The year for a reported school session.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:gYear"/>
+	</xs:simpleType>
+	<xs:complexType name="xMeetingTimeType">
+		<xs:sequence>
+			<xs:element name="timeTableDay" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Time Table Day</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000523</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000523</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The unique identifier for the locally defined rotation cycle date code when the class meets (e.g., in a two day schedule, valid values could be "A" and "B", or "1" and "2").</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="classMeetingDays" type="xDayListType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Class Meeting Days</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000521</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000521</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>The day(s) of the week (e.g., Monday, Wednesday) that the class meets or an indication that a class meets "out-of-school" or "self-paced".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timeTablePeriod" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Time Table Period</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000522</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000522</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>An indication of the portion of a typical daily session in which students receive instruction in a specified subject (e.g., morning, sixth period, block period, or AB schedules).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="roomNumber" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Room Number</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000364</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000364</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>A unique number or alphanumeric code assigned to a room by a school, school system, state, or other agency or entity.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="classBeginningTime" type="xs:time" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Class Beginning Time</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000519</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000519</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>An indication of the time of day the class begins.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="classEndingTime" type="xExitOrWithdrawalType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Class Ending Time</elementName>
+						<sifChar>O</sifChar>
+						<cedsId>000520</cedsId>
+						<cedsURL>https://ceds.ed.gov/element/000520</cedsURL>
+					</xs:appinfo>
+					<xs:documentation>An indication of the time of day the class ends.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="xMeetingTimeListType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Meeting Time List</elementName>
+				<sifChar/>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>A List of meeting times.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="meetingTime" type="xMeetingTimeType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Meeting Time</elementName>
+						<sifChar/>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>Information about the periodic days and meeting times of a section. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="xLoginIdType">
+		<xs:annotation>
+			<xs:appinfo>
+				<cedsId>001170</cedsId>
+				<cedsURL>https://ceds.ed.gov/element/001170</cedsURL>
+			</xs:appinfo>
+			<xs:documentation>The login identifier for the person for the specified Authentication Identity Provider.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
+  <xs:simpleType name="xExitOrWithdrawalType" final="">
+    <xs:annotation>
+      <xs:appinfo>
+        <elementName>Exit or Withdrawal Date</elementName>
+        <sifChar>O</sifChar>
+        <cedsId>000110</cedsId>
+        <cedsURL>https://ceds.ed.gov/element/000110</cedsURL>
+      </xs:appinfo>
+      <xs:documentation>
+        The circumstances under which the student exited from membership in an educational institution.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="1907">
+        <xs:annotation>
+          <xs:appinfo>Student is in a different public school in the same local education agency</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1908">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a public school in a different local education agency in the same state</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1909">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a public school in a different state</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1910">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a private, non-religiously-affiliated school in the same local education agency</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1911">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a private, non-religiously-affiliated school in a different LEA in the same state</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1912">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a private, non-religiously-affiliated school in a different state</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1913">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a private, religiously-affiliated school in the same local education agency</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1914">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a private, religiously-affiliated school in a different LEA in the same state</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1915">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a private, religiously-affiliated school in a different state</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1916">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a school outside of the country</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1917">
+        <xs:annotation>
+          <xs:appinfo>Transferred to an institution</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1918">
+        <xs:annotation>
+          <xs:appinfo>Transferred to home schooling</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1919">
+        <xs:annotation>
+          <xs:appinfo>Transferred to a charter school</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1921">
+        <xs:annotation>
+          <xs:appinfo>Graduated with regular, advanced, International Baccalaureate, or other type of diploma</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1922">
+        <xs:annotation>
+          <xs:appinfo>Completed school with other credentials</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1923">
+        <xs:annotation>
+          <xs:appinfo>Died or is permanently incapacitated</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1924">
+        <xs:annotation>
+          <xs:appinfo>Withdrawn due to illness</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1925">
+        <xs:annotation>
+          <xs:appinfo>Expelled or involuntarily withdrawn</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1926">
+        <xs:annotation>
+          <xs:appinfo>Reached maximum age for services</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1927">
+        <xs:annotation>
+          <xs:appinfo>Discontinued schooling</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1928">
+        <xs:annotation>
+          <xs:appinfo>Completed grade 12, but did not meet all graduation requirements</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1930">
+        <xs:annotation>
+          <xs:appinfo>Enrolled in a postsecondary early admission program, eligible to return</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1931">
+        <xs:annotation>
+          <xs:appinfo>Not enrolled, unknown status</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3499">
+        <xs:annotation>
+          <xs:appinfo>Student is in the same LEA, receiving education services, but is not assigned to a particular school</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3502">
+        <xs:annotation>
+          <xs:appinfo>Not enrolled, eligible to return</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3503">
+        <xs:annotation>
+          <xs:appinfo>Enrolled in a foreign exchange program, eligible to return</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3504">
+        <xs:annotation>
+          <xs:appinfo>Withdrawn from school, under the age for compulsory attendance; eligible to return</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3505">
+        <xs:annotation>
+          <xs:appinfo>Exited</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3508">
+        <xs:annotation>
+          <xs:appinfo>Student is in a charter school managed by the same local education agency</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3509">
+        <xs:annotation>
+          <xs:appinfo>Completed with a state-recognized equivalency certificate</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="73060">
+        <xs:annotation>
+          <xs:appinfo>Officially withdrew and enrolled in ABE, adult secondary education, or adult ESL program</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="73061">
+        <xs:annotation>
+          <xs:appinfo>Officially withdrew and enrolled in a workforce training program</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9999">
+        <xs:annotation>
+          <xs:appinfo>Other</xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

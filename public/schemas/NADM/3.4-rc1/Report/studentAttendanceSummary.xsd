@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--version 3.04.01-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="../SIFglobal.xsd"/>
+	<xs:include schemaLocation="../SIFLocale.xsd"/>
+	<xs:complexType name="studentAttendanceSummaryType">
+		<xs:annotation>
+			<xs:appinfo>
+				<elementName>Student Attendance Summary</elementName>
+				<events>no</events>
+				<isSIFObject>yes</isSIFObject>
+				<cedsId/>
+				<cedsURL/>
+			</xs:appinfo>
+			<xs:documentation>This object provides a summary of a student's daily attendance and membership information for a given school during the time period between the StartDate and EndDate, inclusive. As such, there may be multiple instances of this object for a student in a school over the course of a school year or reporting period.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gSIF_ReportType">
+				<xs:sequence>
+					<xs:element name="studentRefId" type="gRefIdPointerType">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName> Student Reference Id</elementName>
+								<sifChar>M</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>The Id (GUID) of the student for whom this attendance information is being reported.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="schoolRefId" type="gRefIdPointerType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>School Reference Id</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>The Id (GUID) of the school for which this attendance information is being reported.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="schoolYear" type="xs:token" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>School Year</elementName>
+								<sifChar>O</sifChar>
+								<cedsId>000243</cedsId>
+								<cedsURL>https://ceds.ed.gov/element/000243</cedsURL>
+							</xs:appinfo>
+							<xs:documentation>School year for which the information is applicable.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="resident" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Resident Status</elementName>
+								<sifChar>O</sifChar>
+								<cedsId>000532</cedsId>
+								<cedsURL>https://ceds.ed.gov/element/000532</cedsURL>
+							</xs:appinfo>
+							<xs:documentation>An indication as to whether or not the student's legal residence was within the boundaries of the school during the time between the StartDate and EndDate, inclusive.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:token">
+								<xs:enumeration value="Yes"/>
+								<xs:enumeration value="No"/>
+								<xs:enumeration value="Unknown"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="fte" nillable="true" minOccurs="0" type="fteDecimalType">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>FTE Value</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>Full time equivalent numeric value of the student's course load during the time between the StartDate and EndDate, inclusive.  Expressed in decimal form, where 1.00 represents a full time enrollment.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="resolution" type="resolutionType">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Resolution</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>How time is measured in this report.  Such as &quot;length: 65&quot; should mean 65 days when &quot;resolution: Day.&quot;).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="timeTablePeriod" type="xs:token">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Time Table Period</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>For resolutions below 'Day' this could be used for limiting to a specific period.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="timeSpan" type="timeSpanType"/>
+					<xs:element minOccurs="0" name="counts">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element maxOccurs="unbounded" minOccurs="1" name="count"
+									type="countType"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="studentAttendanceSummary" type="studentAttendanceSummaryType"/>
+
+	<xs:simpleType name="fteDecimalType">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="1"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="resolutionType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Day"/>
+			<xs:enumeration value="Period"/>
+			<xs:enumeration value="Activity"/>
+			<xs:enumeration value="Hour"/>
+			<xs:enumeration value="Minute"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="timeSpanType">
+		<xs:sequence>
+			<xs:element name="startDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Start Date</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>The starting date on which the information in this object instance is applicable.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>End Date</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>The ending date on which the information in this object instance is applicable.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="startDay" type="xs:unsignedInt" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Start Day</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>Number of the first school day to which this object instance applies.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endDay" type="xs:unsignedInt" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>End Day</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>Number of the last school day to which this object instance applies.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="length" type="xs:unsignedInt" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>length</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>How long this time span represents relative to this reports resolution.  This can be used as the denominator for calculations.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="countType">
+		<xs:sequence>
+			<xs:element minOccurs="1" name="metric" type="metricType">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Metric</elementName>
+						<sifChar>M</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>What is being counted.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="value" type="xs:decimal">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Value</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>The count (may be fractional).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="rate" type="xs:decimal">
+				<xs:annotation>
+					<xs:appinfo>
+						<elementName>Rate</elementName>
+						<sifChar>O</sifChar>
+						<cedsId/>
+						<cedsURL/>
+					</xs:appinfo>
+					<xs:documentation>Time spent at this metric over time enrolled.  If the metric is &quot;Enrolled&quot; this should equal 1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="metricType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Presents"/>
+			<xs:enumeration value="Absences"/>
+			<xs:enumeration value="ExcusedAbsences"/>
+			<xs:enumeration value="UnexcusedAbsences"/>
+			<xs:enumeration value="Tardies"/>
+			<xs:enumeration value="Enrolled"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
